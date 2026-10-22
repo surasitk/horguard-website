@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ประกาศความเป็นส่วนตัว · Horguard</title>
+<meta name="description" content="ประกาศความเป็นส่วนตัวสำหรับพนักงานรักษาความปลอดภัยที่ใช้ Horguard Patrol">
+<meta name="robots" content="index,follow">
+<link rel="icon" type="image/png" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: single reading column (max 720px) under the same thin apple-style nav as horguard.com; navy CI for headings, numbered sections because the notice is a referenced legal document. */
+:root{
+  --navy:#002B58; --ink:#1D1D1F; --ink-2:#6E6E73; --tile:#F5F5F7; --white:#FFFFFF; --line:#D2D2D7; --link:#0A5BC4;
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue","Noto Sans Thai",system-ui,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--white);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+a{color:var(--link)}
+:focus-visible{outline:2px solid var(--link);outline-offset:3px;border-radius:6px}
+.wrap{max-width:720px;margin:0 auto;padding-left:max(22px,env(safe-area-inset-left,0px));padding-right:max(22px,env(safe-area-inset-right,0px))}
+.gnav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:rgba(255,255,255,.85);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,.08)}
+.gnav .wrap{display:flex;align-items:center;justify-content:space-between;height:48px;max-width:1024px}
+.gnav img{height:18px;width:auto;display:block}
+.gnav a.back{font-size:13px;text-decoration:none}
+header.hero{background:var(--tile);padding-block:48px 36px}
+.eyebrow{font-size:15px;font-weight:600;color:var(--ink-2);margin:0 0 6px}
+h1{font-size:clamp(30px,5vw,44px);line-height:1.15;letter-spacing:-.02em;margin:0 0 12px;color:var(--navy);text-wrap:balance}
+.meta{font-size:14px;color:var(--ink-2);margin:0}
+.meta b{color:var(--ink)}
+main{padding-block:32px 64px}
+.toc{border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin-bottom:36px;font-size:15px}
+.toc p{margin:0 0 8px;font-weight:600}
+.toc ol{margin:0;padding-left:20px;columns:2;column-gap:28px}
+.toc li{break-inside:avoid;margin-bottom:4px}
+.toc a{text-decoration:none}
+@media (max-width:600px){.toc ol{columns:1}}
+section{padding-top:8px;margin-bottom:28px;scroll-margin-top:64px}
+h2{font-size:22px;line-height:1.3;color:var(--navy);margin:0 0 10px;letter-spacing:-.01em}
+h2 span{color:var(--ink-2);font-weight:500;margin-right:6px}
+p{margin:0 0 12px}
+ul{margin:0 0 12px;padding-left:22px}
+li{margin-bottom:6px}
+.tbl{overflow-x:auto;margin:6px 0 14px;border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;min-width:540px;font-size:15px}
+th,td{text-align:left;vertical-align:top;padding:10px 14px;border-bottom:1px solid var(--line)}
+th{background:var(--tile);font-weight:600;font-size:14px}
+tr:last-child td{border-bottom:0}
+.note{background:var(--tile);border-radius:12px;padding:14px 18px;font-size:15px;color:var(--ink)}
+.draft{border:1px dashed #B26B00;color:#7A4A00;background:#FFF6E5;border-radius:12px;padding:12px 16px;font-size:14px;margin-bottom:24px}
+footer{background:var(--tile);color:var(--ink-2);font-size:12px;padding-block:24px 36px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;max-width:1024px}
+footer a{color:var(--ink-2)}
+@media print{.gnav,.toc,footer{display:none}body{font-size:12pt}}
+</style>
+</head>
+<body>
+<nav class="gnav" aria-label="Horguard">
+  <div class="wrap">
+    <a href="/" aria-label="Horguard หน้าแรก"><img src="logo.png" alt="Horguard" width="118" height="18"></a>
+    <a class="back" href="/">กลับหน้าแรก</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Horguard Patrol</p>
+    <h1>ประกาศความเป็นส่วนตัวสำหรับพนักงานรักษาความปลอดภัย</h1>
+    <p class="meta">ฉบับ <b>2026-10-22</b> · มีผลตั้งแต่วันที่ 22 ตุลาคม 2569</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <!-- DRAFT banner: ลบออกเมื่อที่ปรึกษากฎหมาย/DPO ตรวจและเติมข้อมูลในวงเล็บ [ ] ครบแล้ว -->
+  <div class="draft" role="note">ฉบับร่างเพื่อตรวจทาน — ข้อความในวงเล็บเหลี่ยม [ ] ต้องเติมข้อมูลจริงก่อนประกาศใช้</div>
+
+  <nav class="toc" aria-label="สารบัญ">
+    <p>สารบัญ</p>
+    <ol>
+      <li><a href="#who">ใครเป็นผู้ดูแลข้อมูลของคุณ</a></li>
+      <li><a href="#what">ข้อมูลที่เก็บ</a></li>
+      <li><a href="#why">วัตถุประสงค์และฐานทางกฎหมาย</a></li>
+      <li><a href="#optional">เรื่องที่ขอความยินยอมแยก</a></li>
+      <li><a href="#share">การเปิดเผยข้อมูล</a></li>
+      <li><a href="#abroad">การเก็บข้อมูลนอกประเทศ</a></li>
+      <li><a href="#retention">ระยะเวลาเก็บ</a></li>
+      <li><a href="#security">การรักษาความปลอดภัย</a></li>
+      <li><a href="#rights">สิทธิของคุณ</a></li>
+      <li><a href="#contact">ช่องทางติดต่อ</a></li>
+      <li><a href="#changes">การเปลี่ยนแปลงประกาศนี้</a></li>
+    </ol>
+  </nav>
+
+  <section id="who">
+    <h2><span>1.</span>ใครเป็นผู้ดูแลข้อมูลของคุณ</h2>
+    <p><b>ผู้ควบคุมข้อมูลส่วนบุคคล</b> คือบริษัทรักษาความปลอดภัยที่เป็นนายจ้างของคุณ ชื่อบริษัทจะแสดงในแอป Horguard Patrol ตอนที่คุณกดรับทราบประกาศนี้ บริษัทเป็นผู้ตัดสินใจว่าจะเก็บและใช้ข้อมูลของคุณอย่างไร</p>
+    <p><b>ผู้ประมวลผลข้อมูลส่วนบุคคล</b> คือ [ชื่อนิติบุคคลผู้ให้บริการ Horguard] ผู้พัฒนาและให้บริการระบบ Horguard แก่บริษัทนายจ้าง เราประมวลผลข้อมูลตามคำสั่งของบริษัทนายจ้างเท่านั้น และไม่นำข้อมูลของคุณไปใช้เพื่อประโยชน์ของเราเอง</p>
+  </section>
+
+  <section id="what">
+    <h2><span>2.</span>ข้อมูลที่เก็บ</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>ประเภท</th><th>ตัวอย่าง</th><th>ได้มาจาก</th></tr></thead>
+      <tbody>
+        <tr><td>ข้อมูลระบุตัวตน</td><td>ชื่อ-นามสกุล รหัสพนักงาน เบอร์โทร ตำแหน่ง</td><td>บริษัทนายจ้าง</td></tr>
+        <tr><td>บัญชี LINE</td><td>LINE user ID ชื่อที่แสดง (ไม่เก็บรายชื่อเพื่อนหรือข้อความแชท)</td><td>LINE เมื่อคุณลงทะเบียน</td></tr>
+        <tr><td>รูปถ่าย</td><td>รูปตอนเข้างาน ออกงาน และสแกนจุดตรวจ</td><td>กล้องมือถือของคุณ เฉพาะตอนกดลงเวลา</td></tr>
+        <tr><td>ตำแหน่ง</td><td>พิกัด GPS ณ เวลาที่ลงเวลาหรือสแกนจุดตรวจ (ไม่ติดตามตำแหน่งตลอดเวลา)</td><td>มือถือของคุณ</td></tr>
+        <tr><td>การทำงาน</td><td>เวลาเข้า-ออกงาน กะงาน รอบเดินตรวจ วันลา ธงความผิดปกติ</td><td>ระบบ Horguard</td></tr>
+        <tr><td>อุปกรณ์</td><td>รหัสอุปกรณ์ ชนิดเบราว์เซอร์</td><td>มือถือของคุณ</td></tr>
+      </tbody>
+    </table></div>
+    <p>ระบบไม่ใช้การจดจำใบหน้าอัตโนมัติ รูปถ่ายใช้ให้หัวหน้างานตรวจดูด้วยตาเท่านั้น</p>
+  </section>
+
+  <section id="why">
+    <h2><span>3.</span>วัตถุประสงค์และฐานทางกฎหมาย</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>วัตถุประสงค์</th><th>ฐานทางกฎหมาย (พ.ร.บ.คุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562)</th></tr></thead>
+      <tbody>
+        <tr><td>ลงเวลาทำงาน จัดกะ คำนวณค่าแรงและค่าล่วงเวลา</td><td>จำเป็นต่อการปฏิบัติตามสัญญาจ้าง (มาตรา 24(3)) และปฏิบัติตามกฎหมายแรงงาน (มาตรา 24(6))</td></tr>
+        <tr><td>ยืนยันว่าคุณอยู่ที่จุดปฏิบัติงานจริง และป้องกันการลงเวลาแทนกัน</td><td>ประโยชน์อันชอบธรรมของนายจ้างและลูกค้าที่จ้างบริการรักษาความปลอดภัย (มาตรา 24(5))</td></tr>
+        <tr><td>ตรวจสอบการเดินตรวจและรายงานเหตุการณ์</td><td>สัญญาจ้าง (มาตรา 24(3)) และประโยชน์อันชอบธรรม (มาตรา 24(5))</td></tr>
+        <tr><td>แจ้งเตือนเรื่องกะงานของคุณทาง LINE</td><td>สัญญาจ้าง (มาตรา 24(3))</td></tr>
+      </tbody>
+    </table></div>
+    <p>ข้อมูลตามตารางนี้จำเป็นต่อการทำงาน ถ้าไม่ให้ข้อมูล คุณจะลงเวลาผ่าน Horguard Patrol ไม่ได้ ในกรณีนี้ให้ติดต่อหัวหน้างานเพื่อใช้วิธีลงเวลาแบบอื่นที่บริษัทกำหนด</p>
+  </section>
+
+  <section id="optional">
+    <h2><span>4.</span>เรื่องที่ขอความยินยอมแยก</h2>
+    <p>เรื่องต่อไปนี้ไม่บังคับ ระบบจะถามแยกเป็นข้อๆ และไม่ได้ติ๊กไว้ให้ก่อน ถ้าไม่ยินยอมก็ยังใช้งานได้ตามปกติ และถอนความยินยอมได้ทุกเมื่อในหน้า <b>ความเป็นส่วนตัว</b> ของแอป (มาตรา 19)</p>
+    <ul>
+      <li><b>ให้ลูกค้าเจ้าของสถานที่เห็นรูปเข้างานของคุณ</b> ถ้าไม่ยินยอม ลูกค้าจะเห็นเฉพาะเวลาและสถานะการทำงาน ไม่เห็นรูป</li>
+      <li><b>รับข่าวสารและประกาศกะว่างทาง LINE</b> ถ้าไม่ยินยอม คุณยังได้รับข้อความเรื่องกะงานของตัวเองตามปกติ</li>
+    </ul>
+    <p>การถอนความยินยอมไม่กระทบสิ่งที่ทำไปก่อนหน้านั้น</p>
+  </section>
+
+  <section id="share">
+    <h2><span>5.</span>การเปิดเผยข้อมูล</h2>
+    <ul>
+      <li>บริษัทนายจ้าง หัวหน้างาน และผู้ดูแลระบบของบริษัท ตามสิทธิที่จำเป็นต่อหน้าที่</li>
+      <li>ลูกค้าเจ้าของสถานที่ที่คุณปฏิบัติงาน เฉพาะเวลา สถานะ และรอบเดินตรวจของโครงการนั้น (รูปถ่ายเฉพาะเมื่อคุณยินยอมตามข้อ 4)</li>
+      <li>ผู้ให้บริการที่ระบบต้องใช้ ได้แก่ LINE (การล็อกอินและส่งข้อความ) ผู้ให้บริการฐานข้อมูลและคลาวด์ [Supabase] และเครือข่ายเว็บไซต์ [Cloudflare] ภายใต้สัญญาที่กำหนดให้รักษาความลับ</li>
+      <li>หน่วยงานรัฐเมื่อกฎหมายกำหนด</li>
+    </ul>
+    <p>เราไม่ขายหรือให้เช่าข้อมูลส่วนบุคคลของคุณ</p>
+  </section>
+
+  <section id="abroad">
+    <h2><span>6.</span>การเก็บข้อมูลนอกประเทศ</h2>
+    <p>ผู้ให้บริการคลาวด์บางรายอาจเก็บข้อมูลบนเซิร์ฟเวอร์นอกประเทศไทย [ระบุภูมิภาคของเซิร์ฟเวอร์ฐานข้อมูล] การส่งข้อมูลดังกล่าวทำภายใต้มาตรการคุ้มครองที่เหมาะสมตามมาตรา 28 และ 29</p>
+  </section>
+
+  <section id="retention">
+    <h2><span>7.</span>ระยะเวลาเก็บ</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>ข้อมูล</th><th>ระยะเวลา</th></tr></thead>
+      <tbody>
+        <tr><td>รูปถ่ายเข้า-ออกงานและสแกนจุด</td><td>60 วัน แล้วระบบลบอัตโนมัติ</td></tr>
+        <tr><td>รูปของรายการที่ระบบพบความผิดปกติ</td><td>1 ปี เพื่อใช้เป็นหลักฐานกรณีมีข้อโต้แย้ง</td></tr>
+        <tr><td>เวลาทำงาน กะ และค่าแรง</td><td>ตามที่กฎหมายคุ้มครองแรงงานกำหนด [ระบุระยะเวลา]</td></tr>
+        <tr><td>ข้อมูลบัญชีและข้อมูลพนักงาน</td><td>ตลอดการจ้างงาน และไม่เกิน [ระบุระยะเวลา] หลังสิ้นสุดการจ้าง</td></tr>
+        <tr><td>บันทึกการรับทราบประกาศและความยินยอม</td><td>ตลอดการจ้างงาน และไม่เกิน [ระบุระยะเวลา] หลังสิ้นสุดการจ้าง เพื่อพิสูจน์การปฏิบัติตามกฎหมาย</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section id="security">
+    <h2><span>8.</span>การรักษาความปลอดภัย</h2>
+    <ul>
+      <li>ข้อมูลของแต่ละบริษัทแยกจากกันในระดับฐานข้อมูล ผู้ใช้เห็นเฉพาะข้อมูลที่มีสิทธิ์</li>
+      <li>เวลาลงงานใช้เวลาจากเซิร์ฟเวอร์ แก้ย้อนหลังไม่ได้ และการแก้ไขโดยผู้ดูแลมีบันทึกตรวจสอบ</li>
+      <li>รูปถ่ายเก็บในพื้นที่ที่ไม่เปิดสาธารณะ ดูได้ผ่านลิงก์ชั่วคราวเท่านั้น</li>
+      <li>สำรองข้อมูลทุกวันแบบเข้ารหัส</li>
+    </ul>
+  </section>
+
+  <section id="rights">
+    <h2><span>9.</span>สิทธิของคุณ</h2>
+    <p>คุณมีสิทธิตามพ.ร.บ.คุ้มครองข้อมูลส่วนบุคคล ดังนี้</p>
+    <ul>
+      <li>ขอเข้าถึงและขอสำเนาข้อมูลของคุณ (มาตรา 30)</li>
+      <li>ขอรับหรือขอให้ส่งข้อมูลในรูปแบบที่อ่านได้ด้วยเครื่องมือ (มาตรา 31)</li>
+      <li>คัดค้านการเก็บหรือใช้ข้อมูล (มาตรา 32)</li>
+      <li>ขอให้ลบหรือทำให้ไม่สามารถระบุตัวตนได้ (มาตรา 33)</li>
+      <li>ขอให้ระงับการใช้ข้อมูล (มาตรา 34)</li>
+      <li>ขอแก้ไขข้อมูลให้ถูกต้อง (มาตรา 35)</li>
+      <li>ถอนความยินยอมในเรื่องที่ไม่บังคับ ทำได้เองในแอป (มาตรา 19)</li>
+      <li>ร้องเรียนต่อสำนักงานคณะกรรมการคุ้มครองข้อมูลส่วนบุคคล (สคส.)</li>
+    </ul>
+    <p class="note">ยื่นคำขอใช้สิทธิได้ที่ฝ่ายบุคคลของบริษัทนายจ้าง บริษัทจะตอบภายใน 30 วัน สิทธิบางข้ออาจถูกจำกัดเมื่อข้อมูลยังจำเป็นตามสัญญาจ้างหรือกฎหมาย เช่น ข้อมูลเวลาทำงานที่ใช้คำนวณค่าแรง</p>
+  </section>
+
+  <section id="contact">
+    <h2><span>10.</span>ช่องทางติดต่อ</h2>
+    <ul>
+      <li>เรื่องข้อมูลของคุณ: ฝ่ายบุคคลของบริษัทนายจ้าง หรือเจ้าหน้าที่คุ้มครองข้อมูลส่วนบุคคล (DPO) ของบริษัท</li>
+      <li>เรื่องระบบ Horguard: [อีเมล DPO / ผู้ติดต่อของผู้ให้บริการ Horguard] หรือ LINE OA <a href="https://lin.ee/5e7WMZj" target="_blank" rel="noopener">@299nskem</a></li>
+    </ul>
+  </section>
+
+  <section id="changes">
+    <h2><span>11.</span>การเปลี่ยนแปลงประกาศนี้</h2>
+    <p>ถ้ามีการแก้ไขประกาศ เราจะออกฉบับใหม่พร้อมวันที่มีผล และแสดงให้คุณรับทราบในแอปตอนเปิดใช้งานครั้งถัดไป คุณดูฉบับที่เคยรับทราบย้อนหลังได้ในหน้า <b>ความเป็นส่วนตัว</b> ของแอป</p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Horguard</span>
+    <span>ประกาศความเป็นส่วนตัว ฉบับ 2026-10-22 · <a href="/">horguard.com</a></span>
+  </div>
+</footer>
+</body>
+</html>
