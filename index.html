@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Horguard</title>
+<meta name="description" content="Horguard ระบบบริหารงานรักษาความปลอดภัยผ่าน LINE ยามลงเวลาและเดินตรวจในไลน์ หัวหน้าเห็นทุกโครงการในหน้าเดียว">
+<meta property="og:title" content="Horguard — ระบบบริหารงาน รปภ. ผ่าน LINE">
+<meta property="og:description" content="ยามลงเวลาและสแกนจุดตรวจผ่าน LINE หัวหน้าเห็นทุกโครงการในหน้าเดียว">
+<meta property="og:url" content="https://horguard.com/">
+<meta property="og:image" content="https://horguard.com/og.jpg">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" type="image/png" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: apple-style stack of full-width centered tiles separated by thin white gutters; light page, navy CI tiles for the two products. */
+:root{
+  --navy:#002B58;        /* Horguard CI */
+  --navy-deep:#001B38;
+  --ink:#1D1D1F;
+  --ink-2:#6E6E73;
+  --tile:#F5F5F7;
+  --white:#FFFFFF;
+  --line:#D2D2D7;
+  --link:#0A5BC4;        /* CI blue for links/buttons on light */
+  --link-on-dark:#5EA8FF;
+  --on-dark-2:#A1B3C9;
+  --ok:#30D158; --warn:#FFD60A;
+  --line-green:#06C755;
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue","Noto Sans Thai",system-ui,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--white);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.47;letter-spacing:-.01em;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:rgba(255,255,255,.85)}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+img{max-width:100%;display:block}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--link);outline-offset:3px;border-radius:6px}
+[hidden]{display:none!important}
+h1,h2,h3,p{margin:0}
+h1,h2,h3{font-weight:600;letter-spacing:-.02em;text-wrap:balance}
+.wrap{max-width:1024px;margin:0 auto;padding-left:max(22px,env(safe-area-inset-left,0px));padding-right:max(22px,env(safe-area-inset-right,0px))}
+
+/* ---------- global nav ---------- */
+.gnav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(255,255,255,.8);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,.08)}
+.gnav .wrap{display:flex;align-items:center;gap:28px;height:48px}
+.gnav .brand{display:flex;align-items:center;flex:none}
+.gnav .brand img{height:18px;width:auto}
+.gnav nav{display:flex;gap:28px;margin:0 auto;font-size:13px}
+.gnav nav a{color:rgba(0,0,0,.8)}
+.gnav nav a:hover{color:#000;text-decoration:none}
+.gnav .right{display:flex;align-items:center;gap:14px;margin-left:auto}
+.lang{display:inline-flex;font-size:12px;color:var(--ink-2);gap:2px}
+.lang button{border:0;background:none;font:inherit;color:inherit;padding:4px 6px;border-radius:6px;cursor:pointer}
+.lang button[aria-pressed="true"]{color:var(--ink);font-weight:600}
+.signin{font-size:12px;font-weight:500;background:var(--ink);color:#fff;padding:6px 12px;border-radius:980px;white-space:nowrap}
+.signin:hover{text-decoration:none;background:#000}
+@media (max-width:820px){.gnav nav{display:none}}
+
+/* ---------- ribbon ---------- */
+.ribbon{background:var(--tile);text-align:center;font-size:14px;color:var(--ink);padding-block:14px}
+.ribbon a{white-space:nowrap}
+
+/* ---------- tiles ---------- */
+.stack{display:grid;gap:12px;padding-block:12px 0}
+.tile{background:var(--tile);text-align:center;overflow:hidden;position:relative}
+.tile.white{background:var(--white)}
+.tile.dark{background:var(--navy);color:#fff}
+.tile.deep{background:var(--navy-deep);color:#fff}
+.tile .copy{display:grid;gap:6px;justify-items:center;padding-top:52px}
+.eyebrow{font-size:17px;font-weight:600;color:var(--ink-2)}
+.dark .eyebrow,.deep .eyebrow{color:var(--on-dark-2)}
+.h-hero{font-size:clamp(40px,7vw,56px);line-height:1.07}
+.h-tile{font-size:clamp(30px,5.4vw,48px);line-height:1.08}
+.sub{font-size:clamp(19px,2.6vw,24px);line-height:1.2;font-weight:400;letter-spacing:.005em;max-width:30em}
+.note{font-size:15px;color:var(--ink-2);margin-top:4px}
+.dark .note,.deep .note{color:var(--on-dark-2)}
+.ctas{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:14px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-size:17px;line-height:1;padding:12px 22px;border-radius:980px;border:1px solid transparent;font-weight:400;white-space:nowrap}
+.btn:hover{text-decoration:none}
+.btn.fill{background:var(--link);color:#fff}
+.btn.fill:hover{background:#0850AD}
+.btn.line{background:var(--line-green);color:#fff}
+.btn.line:hover{background:#05B34C}
+.btn.ghost{border-color:var(--link);color:var(--link)}
+.btn.ghost:hover{background:var(--link);color:#fff}
+.dark .btn.ghost,.deep .btn.ghost{border-color:var(--link-on-dark);color:var(--link-on-dark)}
+.dark .btn.ghost:hover,.deep .btn.ghost:hover{background:var(--link-on-dark);color:var(--navy-deep)}
+.btn svg{width:18px;height:18px;flex:none}
+.stage{padding:44px 22px 0;display:flex;justify-content:center}
+
+/* ---------- device: dashboard board ---------- */
+.board{width:min(640px,100%);background:var(--navy);color:#fff;border-radius:22px 22px 0 0;padding:22px 22px 26px;text-align:left;display:grid;gap:14px;box-shadow:0 30px 60px -30px rgba(0,27,56,.6)}
+.board-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.board-top b{font-weight:600;font-size:17px;display:block}
+.board-top small{color:var(--on-dark-2);font-size:13px}
+.live{font-size:11px;font-weight:600;letter-spacing:.1em;display:inline-flex;align-items:center;gap:7px;color:var(--on-dark-2)}
+.live i{width:8px;height:8px;border-radius:50%;background:var(--ok);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(48,209,88,.6)}70%{box-shadow:0 0 0 8px rgba(48,209,88,0)}100%{box-shadow:0 0 0 0 rgba(48,209,88,0)}}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stat{background:rgba(255,255,255,.08);border-radius:14px;padding:12px 14px;display:grid;gap:2px}
+.stat span{font-size:12px;color:var(--on-dark-2)}
+.stat b{font-size:26px;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.feed{display:grid;gap:6px}
+.row{display:grid;grid-template-columns:48px 1fr auto;gap:12px;align-items:center;background:rgba(255,255,255,.05);border-radius:10px;padding:10px 12px;font-size:14px}
+.row time{font-size:13px;color:var(--on-dark-2);font-variant-numeric:tabular-nums}
+.row p{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pill{font-size:11px;font-weight:600;padding:3px 9px;border-radius:980px;white-space:nowrap}
+.pill.ok{background:rgba(48,209,88,.18);color:#7EE29A}
+.pill.wait{background:rgba(255,214,10,.16);color:#FFE066}
+.pill.info{background:rgba(255,255,255,.12);color:#E5EAF1}
+.sample{font-size:11px;color:var(--on-dark-2)}
+@media (max-width:520px){.stat b{font-size:20px}.row{grid-template-columns:42px 1fr}.row .pill{grid-column:2;justify-self:start}}
+
+/* ---------- device: phone ---------- */
+.phone{width:290px;max-width:100%;background:#0B0F14;border-radius:46px 46px 0 0;padding:12px 12px 0;box-shadow:0 30px 60px -30px rgba(0,0,0,.7)}
+.screen{background:#8CABD9;border-radius:36px 36px 0 0;overflow:hidden;display:grid;text-align:left}
+.phone-bar{display:flex;align-items:center;gap:8px;padding:30px 16px 10px;background:#22344D;color:#fff;font-size:14px;font-weight:600}
+.phone-bar img{width:26px;height:26px;border-radius:7px}
+.chat{padding:14px;display:grid;gap:8px;min-height:150px;align-content:end;background:#8CABD9}
+.bubble{background:#fff;color:var(--ink);border-radius:16px 16px 16px 4px;padding:9px 12px;font-size:13px;max-width:88%;line-height:1.35}
+.bubble b{color:var(--navy)}
+.rich{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.15)}
+.rich div{background:var(--navy);color:#fff;display:grid;justify-items:center;gap:6px;padding:15px 4px 16px;font-size:12px;text-align:center}
+.rich svg{width:22px;height:22px}
+
+/* ---------- device: laptop ---------- */
+.laptop{width:min(720px,100%);}
+.lid{background:#0B0F14;border-radius:18px 18px 0 0;padding:12px 12px 0}
+.app{background:#fff;border-radius:8px 8px 0 0;overflow:hidden;display:grid;grid-template-columns:150px 1fr;text-align:left;min-height:300px}
+.side{background:var(--navy);color:#fff;padding:16px 12px;display:grid;gap:4px;align-content:start;font-size:12px}
+.side .logo-w{height:13px;width:auto;margin:2px 4px 14px;opacity:.95}
+.side span{padding:7px 9px;border-radius:7px;color:var(--on-dark-2)}
+.side span.on{background:rgba(255,255,255,.12);color:#fff}
+.main{padding:16px 18px;display:grid;gap:12px;align-content:start;min-width:0}
+.main-h{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.main-h b{font-size:15px;color:var(--ink)}
+.chips{display:flex;gap:6px}
+.chips i{font-style:normal;font-size:11px;padding:4px 9px;border-radius:980px;background:var(--tile);color:var(--ink-2)}
+.tbl{width:100%;border-collapse:collapse;font-size:12px;color:var(--ink)}
+.tbl th{font-weight:500;color:var(--ink-2);text-align:left;padding:6px 6px;border-bottom:1px solid var(--line)}
+.tbl td{padding:9px 6px;border-bottom:1px solid #EDEDF0;font-variant-numeric:tabular-nums}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;vertical-align:middle}
+.dot.g{background:#30A14E}.dot.y{background:#E0A500}.dot.r{background:#E5484D}
+.base{height:14px;background:linear-gradient(#D7D9DE,#B9BCC3);border-radius:0 0 14px 14px;width:calc(100% + 40px);margin-left:-20px}
+@media (max-width:600px){.app{grid-template-columns:1fr}.side{display:none}.tbl .hide-s{display:none}}
+
+/* ---------- grid tiles ---------- */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:760px){.grid2{grid-template-columns:1fr}}
+.gtile{background:var(--tile);text-align:center;padding:48px 28px 40px;display:grid;gap:8px;justify-items:center;align-content:start;min-height:420px}
+.gtile.dark{background:var(--navy);color:#fff}
+.gtile.short{min-height:0;padding-bottom:48px}
+.gtile h3{font-size:clamp(28px,3.4vw,36px);line-height:1.1}
+.gtile p{font-size:19px;line-height:1.3;max-width:20em}
+.gtile .tag{font-size:12px;font-weight:600;padding:4px 10px;border-radius:980px;background:#E3F3E8;color:#1F7A3A}
+.gtile .tag.soon{background:#FFF1D6;color:#8A5A00}
+.gtile.dark .tag.soon{background:rgba(255,214,10,.16);color:#FFE066}
+.gviz{margin-top:22px;width:100%;display:flex;justify-content:center}
+/* gps viz */
+.selfie{width:220px;border-radius:22px;background:#fff;box-shadow:0 18px 40px -22px rgba(0,0,0,.35);padding:14px;display:grid;gap:10px;text-align:left}
+.selfie .map{height:110px;border-radius:14px;background:
+  radial-gradient(circle at 50% 55%,rgba(10,91,196,.22) 0 34px,transparent 35px),
+  linear-gradient(90deg,transparent 48%,#E6E9EE 48% 52%,transparent 52%),
+  linear-gradient(0deg,transparent 46%,#E6E9EE 46% 54%,transparent 54%),
+  #F2F4F7;position:relative}
+.selfie .map::after{content:"";position:absolute;left:50%;top:55%;width:14px;height:14px;border-radius:50%;background:var(--link);border:3px solid #fff;transform:translate(-50%,-50%);box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.selfie b{font-size:14px}
+.selfie small{font-size:12px;color:var(--ink-2);display:block}
+/* qr viz */
+.qrcard{width:210px;background:#fff;border-radius:22px;padding:18px;box-shadow:0 18px 40px -22px rgba(0,0,0,.45);display:grid;gap:10px;justify-items:center;color:var(--ink)}
+.qrcard .qr{width:120px;height:120px;image-rendering:pixelated}
+.qrcard b{font-size:14px}
+.qrcard small{font-size:12px;color:var(--ink-2)}
+/* shifts viz */
+.week{display:grid;grid-template-columns:repeat(7,30px);gap:6px}
+.week span{height:30px;border-radius:8px;font-size:11px;display:grid;place-items:center}
+.week span.d{background:#fff;color:var(--navy);font-weight:600}
+.week span.n{background:#5D7FA8;color:#fff}
+.week span{background:rgba(255,255,255,.1);color:var(--on-dark-2)}
+.legend{display:flex;gap:14px;font-size:12px;color:var(--ink-2);justify-content:center;margin-top:12px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+/* portal viz */
+.portal{width:250px;background:rgba(255,255,255,.08);border-radius:18px;padding:14px;display:grid;gap:8px;text-align:left}
+.portal div{display:flex;justify-content:space-between;font-size:13px;padding:8px 10px;border-radius:10px;background:rgba(255,255,255,.06)}
+.portal em{font-style:normal;color:#7EE29A;font-variant-numeric:tabular-nums}
+
+/* ---------- compare ---------- */
+.compare{background:var(--white);padding-block:80px}
+.compare h2{font-size:clamp(32px,4.8vw,48px);line-height:1.08;text-align:center;margin-bottom:44px}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line)}
+.col{padding:28px 20px 8px;display:grid;gap:14px;align-content:start;text-align:center}
+.col + .col{border-left:1px solid var(--line)}
+.col h3{font-size:21px}
+.col.us h3{color:var(--navy)}
+.col ul{list-style:none;margin:0;padding:0;display:grid;gap:12px;font-size:15px;color:var(--ink-2)}
+.col.us ul{color:var(--ink)}
+.col li.no{color:#AEAEB2}
+@media (max-width:760px){.cols{grid-template-columns:1fr}.col + .col{border-left:0;border-top:1px solid var(--line)}}
+
+/* ---------- faq ---------- */
+.faq{background:var(--tile);padding-block:80px}
+.faq h2{font-size:clamp(32px,4.8vw,48px);text-align:center;margin-bottom:36px}
+.qa{max-width:760px;margin:0 auto;border-top:1px solid var(--line)}
+details{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;list-style:none;padding:20px 40px 20px 0;font-size:19px;font-weight:600;position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"";position:absolute;right:8px;top:28px;width:9px;height:9px;border-right:2px solid var(--ink-2);border-bottom:2px solid var(--ink-2);transform:rotate(45deg);transition:transform .2s}
+details[open] summary::after{transform:rotate(-135deg);top:32px}
+details p{padding:0 0 22px;color:var(--ink-2);max-width:62ch}
+
+/* ---------- contact ---------- */
+.contact .copy{padding-bottom:0}
+.contact-row{display:flex;gap:28px;align-items:center;justify-content:center;flex-wrap:wrap;padding:40px 22px 64px}
+.qrbox{background:#fff;border-radius:22px;padding:16px;display:grid;justify-items:center;gap:8px}
+.qrbox img{width:170px;height:170px;image-rendering:pixelated}
+.qrbox span{color:var(--ink);font-size:13px;font-weight:600}
+.copyline{display:grid;gap:10px;justify-items:start;text-align:left}
+.copyline code{font-family:ui-monospace,Menlo,monospace;font-size:15px;background:rgba(255,255,255,.1);padding:8px 12px;border-radius:10px;user-select:all;color:#fff}
+.copyline button{background:transparent;color:var(--link-on-dark);border:1px solid var(--link-on-dark);border-radius:980px;padding:8px 16px;font:inherit;font-size:14px;cursor:pointer}
+.copyline small{font-size:13px;color:var(--on-dark-2);max-width:22em}
+
+/* ---------- footer ---------- */
+footer{background:var(--tile);color:var(--ink-2);font-size:12px;line-height:1.5;padding-block:28px 40px}
+footer .fine{padding-bottom:16px;border-bottom:1px solid var(--line)}
+.fcols{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding-block:20px;border-bottom:1px solid var(--line)}
+.fcols h4{margin:0 0 8px;font-size:12px;font-weight:600;color:var(--ink)}
+.fcols ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.fcols a{color:var(--ink-2)}
+.fcols a:hover{color:var(--ink)}
+.fbot{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;padding-top:16px}
+@media (max-width:760px){.fcols{grid-template-columns:1fr 1fr}}
+
+/* ---------- mobile menu ---------- */
+.menu-btn{display:none;width:40px;height:40px;margin-right:-10px;border:0;background:none;cursor:pointer;position:relative;color:var(--ink)}
+.menu-btn span{position:absolute;left:12px;right:12px;height:1.5px;background:currentColor;border-radius:2px;transition:transform .25s ease,top .25s ease}
+.menu-btn span:nth-child(1){top:16px}.menu-btn span:nth-child(2){top:23px}
+.menu-open .menu-btn span:nth-child(1){top:19.5px;transform:rotate(45deg)}
+.menu-open .menu-btn span:nth-child(2){top:19.5px;transform:rotate(-45deg)}
+.mmenu{position:fixed;inset:calc(48px + env(safe-area-inset-top,0px)) 0 0 0;z-index:49;background:rgba(255,255,255,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:20px max(28px,env(safe-area-inset-left,0px)) calc(32px + env(safe-area-inset-bottom,0px));display:none;flex-direction:column;gap:6px;overflow-y:auto}
+.menu-open .mmenu{display:flex;animation:drop .25s ease}
+@keyframes drop{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.mmenu a.big{font-size:28px;font-weight:600;color:var(--ink);padding-block:6px;letter-spacing:-.02em}
+.mmenu a.big:hover{text-decoration:none;color:var(--link)}
+.mmenu .msep{height:1px;background:var(--line);margin:14px 0}
+.mmenu .mrow{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.mmenu .mlang{display:flex;gap:8px;margin-top:6px}
+.mmenu .mlang button{border:1px solid var(--line);background:#fff;border-radius:980px;padding:8px 16px;font:inherit;font-size:15px;color:var(--ink-2);cursor:pointer}
+.mmenu .mlang button[aria-pressed="true"]{border-color:var(--ink);color:var(--ink);font-weight:600}
+.menu-open{overflow:hidden}
+
+/* ---------- floating LINE (mobile) ---------- */
+.fab{display:none;position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:40;align-items:center;gap:8px;background:var(--line-green);color:#fff;border-radius:980px;padding:12px 18px 12px 14px;font-size:15px;font-weight:600;box-shadow:0 10px 28px -10px rgba(6,199,85,.7)}
+.fab svg{width:22px;height:22px}
+.fab:hover{text-decoration:none}
+
+@media (max-width:820px){
+  .gnav .lang,.gnav .signin{display:none}
+  .menu-btn{display:block}
+}
+@media (max-width:600px){
+  body{font-size:16px}
+  .gnav .brand img{height:16px}
+  .ribbon{font-size:12px;padding:10px 16px}
+  .tile .copy{padding-top:40px;gap:6px}
+  .eyebrow{font-size:15px}
+  .h-hero{font-size:40px}
+  .h-tile{font-size:30px;line-height:1.12}
+  .sub{font-size:18px;line-height:1.3;padding-inline:4px}
+  .note{font-size:14px}
+  .ctas{gap:10px;margin-top:12px}
+  .btn{font-size:15px;padding:10px 18px}
+  .stage{padding:32px 16px 0}
+  .board{padding:16px 14px 18px;border-radius:18px 18px 0 0;gap:12px}
+  .stat{padding:10px}
+  .row{font-size:13px;padding:9px 10px}
+  .phone{width:250px;border-radius:40px 40px 0 0}
+  .screen{border-radius:30px 30px 0 0}
+  .lid{padding:8px 8px 0;border-radius:14px 14px 0 0}
+  .main{padding:12px}
+  .tbl{font-size:11px}
+  .tbl td,.tbl th{padding:7px 4px}
+  .chips{display:none}
+  .base{width:calc(100% + 20px);margin-left:-10px;height:10px}
+  .grid2{gap:12px}
+  .gtile{min-height:0;padding:40px 20px 44px}
+  .gtile h3{font-size:28px}
+  .gtile p{font-size:17px}
+  .gviz{margin-top:18px}
+  .compare,.faq{padding-block:56px}
+  .compare h2,.faq h2{font-size:30px;margin-bottom:28px}
+  .cols{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;border-top:0;margin-inline:calc(-1 * max(22px,env(safe-area-inset-left,0px)));padding:0 max(22px,env(safe-area-inset-left,0px)) 8px;scrollbar-width:none}
+  .cols::-webkit-scrollbar{display:none}
+  .col{flex:0 0 78%;scroll-snap-align:center;background:var(--tile);border-radius:20px;padding:26px 18px 24px}
+  .col + .col{border:0}
+  .col.us{background:var(--navy);color:#fff}
+  .col.us h3{color:#fff}
+  .col.us ul{color:#fff}
+  .swipe-hint{display:block!important}
+  summary{font-size:17px;padding:18px 36px 18px 0}
+  .contact-row{flex-direction:column;gap:22px;padding:32px 16px 56px}
+  .copyline{justify-items:center;text-align:center}
+  .copyline code{font-size:14px}
+  footer{padding-bottom:96px}
+  .fcols{grid-template-columns:1fr 1fr;gap:18px 12px}
+  .fab{display:inline-flex}
+}
+@media (max-width:360px){
+  .h-hero{font-size:34px}.h-tile{font-size:27px}
+  .stats{gap:6px}.stat b{font-size:18px}
+  .btn{padding:10px 14px}
+}
+</style>
+</head>
+<body>
+
+<header class="gnav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Horguard"><img src="logo.png" alt="Horguard" width="118" height="18"></a>
+    <nav aria-label="หลัก">
+      <a href="#patrol">Patrol</a>
+      <a href="#force">Force</a>
+      <a href="#features" data-i="nav.features">ฟีเจอร์</a>
+      <a href="#compare" data-i="nav.compare">เปรียบเทียบ</a>
+      <a href="#faq" data-i="nav.faq">คำถาม</a>
+      <a href="#contact" data-i="nav.contact">ติดต่อ</a>
+    </nav>
+    <div class="right">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" id="lang-th" data-lang="th" aria-pressed="true">TH</button>
+        <button type="button" id="lang-en" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="signin" href="https://force.horguard.com/" data-i="nav.signin">เข้าสู่ระบบ</a>
+      <button type="button" class="menu-btn" id="menu-btn" aria-label="เมนู" aria-expanded="false" aria-controls="mmenu"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="mmenu" id="mmenu" aria-label="เมนู">
+  <a class="big" href="#patrol">Horguard Patrol</a>
+  <a class="big" href="#force">Horguard Force</a>
+  <a class="big" href="#features" data-i="nav.features">ฟีเจอร์</a>
+  <a class="big" href="#compare" data-i="nav.compare">เปรียบเทียบ</a>
+  <a class="big" href="#faq" data-i="nav.faq">คำถาม</a>
+  <a class="big" href="#contact" data-i="nav.contact">ติดต่อ</a>
+  <div class="msep"></div>
+  <div class="mrow">
+    <a class="btn fill" href="https://force.horguard.com/" data-i="hero.signin">เข้าสู่ระบบ Force</a>
+    <a class="btn line" href="https://lin.ee/5e7WMZj" target="_blank" rel="noopener" data-i="ribbon.a2">ทักไลน์</a>
+  </div>
+  <div class="mlang" role="group" aria-label="Language">
+    <button type="button" data-lang="th" aria-pressed="true">ภาษาไทย</button>
+    <button type="button" data-lang="en" aria-pressed="false">English</button>
+  </div>
+</div>
+
+<main id="top">
+  <div class="ribbon"><span data-i="ribbon.t">ทดลองใช้กับโครงการนำร่องก่อนตัดสินใจ ตั้งค่าเสร็จในวันเดียว</span> <a href="https://lin.ee/5e7WMZj" target="_blank" rel="noopener" data-i="ribbon.a">ทักไลน์ ›</a></div>
+
+  <div class="stack">
+    <!-- hero -->
+    <section class="tile white">
+      <div class="copy wrap">
+        <h1 class="h-hero">Horguard</h1>
+        <p class="sub" data-i="hero.sub">พิสูจน์ได้ทุกกะ ว่ายามอยู่จริง และเดินตรวจจริง</p>
+        <p class="note" data-i="hero.note">ระบบบริหารงาน รปภ. ที่ยามใช้ผ่าน LINE ไม่ต้องลงแอป</p>
+        <div class="ctas">
+          <a class="btn fill" href="https://lin.ee/5e7WMZj" target="_blank" rel="noopener" data-i="hero.demo">ขอดูเดโม</a>
+          <a class="btn ghost" href="https://force.horguard.com/" data-i="hero.signin">เข้าสู่ระบบ Force</a>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="board" aria-label="ตัวอย่างหน้าภาพรวม">
+          <div class="board-top">
+            <div><b data-i="board.site">คอนโด ริเวอร์ไซด์</b><small data-i="board.shift">กะดึก 19:00–07:00 · 3 ป้อม</small></div>
+            <span class="live"><i></i>LIVE</span>
+          </div>
+          <div class="stats">
+            <div class="stat"><span data-i="board.s1">ยามเข้างาน</span><b>4/4</b></div>
+            <div class="stat"><span data-i="board.s2">รอบตรวจ</span><b>11/12</b></div>
+            <div class="stat"><span data-i="board.s3">เหตุการณ์</span><b>1</b></div>
+          </div>
+          <div class="feed">
+            <div class="row"><time>23:42</time><p data-i="board.r1">สมชาย สแกนจุด ลานจอด B2</p><span class="pill ok" data-i="board.p1">ตรงเวลา</span></div>
+            <div class="row"><time>23:30</time><p data-i="board.r2">รอบตรวจ ประตูหลัง</p><span class="pill wait" data-i="board.p2">รอสแกน</span></div>
+            <div class="row"><time>22:15</time><p data-i="board.r3">แจ้งเหตุ: ไฟทางเดินชั้น 3 ดับ</p><span class="pill info" data-i="board.p3">ส่งหัวหน้าแล้ว</span></div>
+            <div class="row"><time>18:52</time><p data-i="board.r4">มานพ เข้างาน ป้อมหน้า · GPS + เซลฟี่</p><span class="pill ok" data-i="board.p4">ในพื้นที่</span></div>
+          </div>
+          <p class="sample" data-i="board.sample">ข้อมูลตัวอย่าง</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- patrol -->
+    <section class="tile dark" id="patrol">
+      <div class="copy wrap">
+        <p class="eyebrow">Horguard Patrol</p>
+        <h2 class="h-tile" data-i="patrol.h">เข้างาน เดินตรวจ แจ้งเหตุ<br>จบในไลน์</h2>
+        <p class="sub" data-i="patrol.sub">ยามกดจากเมนูใน LINE ที่มีอยู่แล้ว มือถือรุ่นเก่าก็ใช้ได้</p>
+        <div class="ctas">
+          <a class="btn line" href="https://lin.ee/5e7WMZj" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s6-3.5 8.2-6c1.5-1.7 1.8-3.3 1.8-4.8C22 6.6 17.5 3 12 3z"/></svg><span data-i="patrol.cta1">ทักไลน์ ขอดูเดโม</span></a>
+          <a class="btn ghost" href="#features" data-i="patrol.cta2">ดูฟีเจอร์</a>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="phone" aria-hidden="true">
+          <div class="screen">
+            <div class="phone-bar"><img src="icon.png" alt="">Horguard</div>
+            <div class="chat">
+              <div class="bubble"><b>Horguard</b><br><span data-i="chat.1">เข้างานสำเร็จ 18:52 · ป้อมหน้า</span></div>
+              <div class="bubble"><span data-i="chat.2">รอบตรวจถัดไป 20:00 · 6 จุด</span></div>
+            </div>
+            <div class="rich">
+              <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 17l5-5-5-5M15 12H3M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4"/></svg><span data-i="rm.1">เข้างาน</span></div>
+              <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 17l5-5-5-5M19 12H7M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/></svg><span data-i="rm.2">ออกงาน</span></div>
+              <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8V5a1 1 0 011-1h3M16 4h3a1 1 0 011 1v3M20 16v3a1 1 0 01-1 1h-3M8 20H5a1 1 0 01-1-1v-3M4 12h16"/></svg><span data-i="rm.3">สแกนจุด</span></div>
+              <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5L21 19.5H3z"/><path d="M12 10v4M12 17v.01"/></svg><span data-i="rm.4">แจ้งเหตุ</span></div>
+              <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="16" rx="2"/><path d="M3.5 9.5h17M8 2.5v4M16 2.5v4"/></svg><span data-i="rm.5">กะของฉัน</span></div>
+              <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3.5H6.5a2 2 0 00-2 2v13a2 2 0 002 2h11a2 2 0 002-2V9z"/><path d="M14 3.5V9h5.5M8.5 13h7M8.5 17h4"/></svg><span data-i="rm.6">ขอลา</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- force -->
+    <section class="tile" id="force">
+      <div class="copy wrap">
+        <p class="eyebrow">Horguard Force</p>
+        <h2 class="h-tile" data-i="force.h">ทุกโครงการ ในหน้าจอเดียว</h2>
+        <p class="sub" data-i="force.sub">เจ้าของ แอดมิน และหัวหน้า จัดการพนักงาน กะ และจุดตรวจ แล้วดูภาพรวมสดได้จากเว็บ</p>
+        <div class="ctas">
+          <a class="btn fill" href="https://force.horguard.com/" data-i="force.cta1">เข้าสู่ระบบ Force</a>
+          <a class="btn ghost" href="https://lin.ee/5e7WMZj" target="_blank" rel="noopener" data-i="force.cta2">ขอเปิดบัญชีบริษัท</a>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="laptop" aria-hidden="true">
+          <div class="lid">
+            <div class="app">
+              <div class="side">
+                <img class="logo-w" src="logo.png" alt="" style="filter:brightness(0) invert(1)">
+                <span class="on" data-i="lp.n1">ภาพรวม</span>
+                <span data-i="lp.n2">โครงการ</span>
+                <span data-i="lp.n3">พนักงาน</span>
+                <span data-i="lp.n4">ตารางกะ</span>
+                <span data-i="lp.n5">จุดตรวจ</span>
+              </div>
+              <div class="main">
+                <div class="main-h"><b data-i="lp.h">ภาพรวมวันนี้</b><div class="chips"><i data-i="lp.c1">กรุงเทพฯ</i><i data-i="lp.c2">ทุกโครงการ</i></div></div>
+                <table class="tbl">
+                  <thead><tr><th data-i="lp.t1">โครงการ</th><th data-i="lp.t2">เข้างาน</th><th class="hide-s" data-i="lp.t3">รอบตรวจ</th><th data-i="lp.t4">สถานะ</th></tr></thead>
+                  <tbody>
+                    <tr><td data-i="lp.p1">คอนโด ริเวอร์ไซด์</td><td>4/4</td><td class="hide-s">11/12</td><td><span class="dot g"></span><span data-i="lp.s1">ปกติ</span></td></tr>
+                    <tr><td data-i="lp.p2">โรงงาน บางพลี</td><td>6/7</td><td class="hide-s">18/18</td><td><span class="dot y"></span><span data-i="lp.s2">ขาด 1 คน</span></td></tr>
+                    <tr><td data-i="lp.p3">ออฟฟิศ สาทร</td><td>2/2</td><td class="hide-s">7/9</td><td><span class="dot r"></span><span data-i="lp.s3">รอบตรวจขาด</span></td></tr>
+                    <tr><td data-i="lp.p4">หมู่บ้าน ราชพฤกษ์</td><td>3/3</td><td class="hide-s">8/8</td><td><span class="dot g"></span><span data-i="lp.s4">ปกติ</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="base"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- feature grid -->
+    <div class="grid2" id="features">
+      <section class="gtile">
+        <span class="tag" data-i="tag.now">พร้อมใช้</span>
+        <h3 data-i="g1.h">GPS + เซลฟี่</h3>
+        <p data-i="g1.p">ยืนยันว่าอยู่ในพื้นที่โครงการจริง ด้วยเวลาจากเซิร์ฟเวอร์</p>
+        <div class="gviz"><div class="selfie" aria-hidden="true"><div class="map"></div><div><b data-i="g1.v1">อยู่ในพื้นที่ · 18 ม.</b><small data-i="g1.v2">ป้อมหน้า · 18:52:07</small></div></div></div>
+      </section>
+      <section class="gtile dark">
+        <span class="tag" data-i="tag.now">พร้อมใช้</span>
+        <h3 data-i="g2.h">สแกน QR จุดตรวจ</h3>
+        <p data-i="g2.p">พิมพ์ QR จาก Force ติดตามจุด ยามสแกนผ่านไลน์ เห็นผลทันที</p>
+        <div class="gviz"><div class="qrcard" aria-hidden="true"><img class="qr" src="cp-qr.png" alt="" width="120" height="120"><b data-i="g2.v1">ลานจอด B2</b><small>CP-0417</small></div></div>
+      </section>
+      <section class="gtile dark">
+        <span class="tag" data-i="tag.now">พร้อมใช้</span>
+        <h3 data-i="g3.h">จัดกะ และป้อมควง 24</h3>
+        <p data-i="g3.p">สร้างกะทั้งเดือนจากแม่แบบ หรือเปิดโหมดไม่ต้องจัดกะให้ป้อมที่สลับคนเอง</p>
+        <div class="gviz" style="display:grid;justify-items:center">
+          <div class="week" aria-hidden="true"><span class="d" data-i="d1">จ</span><span class="d" data-i="d2">อ</span><span class="n" data-i="d3">พ</span><span class="n" data-i="d4">พฤ</span><span data-i="d5">ศ</span><span class="d" data-i="d6">ส</span><span class="d" data-i="d7">อา</span></div>
+          <div class="legend" style="color:var(--on-dark-2)"><span><i style="background:#fff"></i><span data-i="lg1">กะกลางวัน</span></span><span><i style="background:#5D7FA8"></i><span data-i="lg2">กะดึก</span></span></div>
+        </div>
+      </section>
+      <section class="gtile">
+        <span class="tag soon" data-i="tag.soon">เร็วๆ นี้</span>
+        <h3 data-i="g4.h">หน้าดูงานสำหรับลูกค้า</h3>
+        <p data-i="g4.p">เจ้าของสถานที่เปิดดูรอบตรวจ รูปหลักฐาน และรายงานของโครงการตัวเองได้</p>
+        <div class="gviz"><div class="portal" style="background:var(--navy);color:#fff" aria-hidden="true"><div><span data-i="g4.v1">รอบตรวจเมื่อคืน</span><em>12/12</em></div><div><span data-i="g4.v2">ยามเข้างานตรงเวลา</span><em>100%</em></div><div><span data-i="g4.v3">เหตุการณ์ที่ปิดแล้ว</span><em>3/3</em></div></div></div>
+      </section>
+      <section class="gtile short">
+        <span class="tag soon" data-i="tag.soon">เร็วๆ นี้</span>
+        <h3 data-i="g5.h">แจ้งเตือนรอบตรวจที่ขาด</h3>
+        <p data-i="g5.p">รอบไหนเลยเวลาแล้วยังไม่สแกน หัวหน้าได้ข้อความทาง LINE ทันที</p>
+      </section>
+      <section class="gtile short">
+        <span class="tag soon" data-i="tag.soon">เร็วๆ นี้</span>
+        <h3 data-i="g6.h">ลา กะว่าง และค่าแรง</h3>
+        <p data-i="g6.p">อนุมัติลา กระจายกะว่าง และสรุปชั่วโมงพร้อม OT 1.25 / 2.5 เท่า ตามกฎ รปภ. 2569</p>
+      </section>
+    </div>
+  </div>
+
+  <section class="compare" id="compare">
+    <div class="wrap">
+      <h2 data-i="cmp.h">เลือกให้เหมาะกับบริษัทคุณ</h2>
+      <p class="swipe-hint" style="display:none;text-align:center;color:var(--ink-2);font-size:14px;margin:-16px 0 18px" data-i="cmp.swipe">ปัดเพื่อเทียบ ›</p>
+      <div class="cols">
+        <div class="col"><h3 data-i="cmp.c1">นาฬิกายาม / สมุด</h3><ul><li class="no" data-i="cmp.a1">ไม่มีการยืนยันตัวตน</li><li data-i="cmp.a2">ดูผลเดินตรวจปลายเดือน</li><li class="no" data-i="cmp.a3">ลูกค้าดูเองไม่ได้</li><li data-i="cmp.a4">ต้องซื้อเครื่องทุกป้อม</li></ul></div>
+        <div class="col"><h3 data-i="cmp.c2">แอปลงเวลาทั่วไป</h3><ul><li data-i="cmp.b1">GPS + เซลฟี่</li><li class="no" data-i="cmp.b2">ไม่มีเดินตรวจตามจุด</li><li class="no" data-i="cmp.b3">ไม่รองรับป้อมควง 24</li><li data-i="cmp.b4">ยามต้องลงแอปเพิ่ม</li></ul></div>
+        <div class="col us"><h3>Horguard</h3><ul><li data-i="cmp.c1x">GPS + เซลฟี่ + ตรวจพื้นที่โครงการ</li><li data-i="cmp.c2x">สแกน QR เห็นผลทันที</li><li data-i="cmp.c3x">ป้อมควง 24 และตัวสแปร์ในตัว</li><li data-i="cmp.c4x">ใช้ผ่าน LINE ไม่ต้องลงแอป</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <div class="wrap">
+      <h2 data-i="faq.h">คำถามที่พบบ่อย</h2>
+      <div class="qa">
+        <details><summary data-i="q1">ยามต้องดาวน์โหลดแอปไหม</summary><p data-i="a1">ไม่ต้อง ยามเพิ่มเพื่อน LINE ของบริษัทแล้วกดเมนูได้เลย ใช้ได้ทั้ง iPhone และ Android</p></details>
+        <details><summary data-i="q2">ถ้ายามใช้ GPS ปลอม หรือให้เพื่อนกดแทนล่ะ</summary><p data-i="a2">ทุกการเข้างานต้องมีเซลฟี่คู่กับพิกัด ระบบใช้เวลาจากเซิร์ฟเวอร์ และตั้งธงรายการผิดปกติให้หัวหน้าตรวจ เช่น ตำแหน่งแปลก หรือสแกนจุดเร็วเกินกว่าจะเดินทัน</p></details>
+        <details><summary data-i="q3">ป้อมที่ยามควง 24 ชม. ต้องจัดกะไหม</summary><p data-i="a3">ไม่ต้อง เปิดโหมดไม่จัดกะล่วงหน้าให้ป้อมนั้น ยามที่ผูกกับโครงการเข้างานเองได้ และระบบเตือนเมื่อคนในช่วงเวลานั้นไม่ครบ</p></details>
+        <details><summary data-i="q4">ข้อมูลปลอดภัยและเป็นไปตาม PDPA ไหม</summary><p data-i="a4">ข้อมูลแต่ละบริษัทแยกกันด้วยสิทธิ์ระดับฐานข้อมูล ยามให้ความยินยอมก่อนเก็บรูปและพิกัด และกำหนดระยะเวลาเก็บรูปได้</p></details>
+        <details><summary data-i="q5">ราคาเท่าไร</summary><p data-i="a5">คิดรายเดือนตามจำนวนยามที่ใช้งานจริง ไม่มีค่าเครื่อง ไม่ผูกสัญญายาว ทักไลน์เพื่อรับใบเสนอราคาตามขนาดบริษัท</p></details>
+        <details><summary data-i="q6">เป็นลูกค้าอยู่แล้ว เข้าระบบที่ไหน</summary><p data-i="a6">เจ้าของ แอดมิน และหัวหน้าเข้าที่ force.horguard.com ด้วยบัญชี LINE ส่วนยามเปิดจากเมนูใน LINE OA ของบริษัท</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="tile deep contact" id="contact">
+    <div class="copy wrap">
+      <p class="eyebrow" data-i="ct.e">ติดต่อเรา</p>
+      <h2 class="h-tile" data-i="ct.h">คุยกับทีม Horguard</h2>
+      <p class="sub" data-i="ct.sub">บอกจำนวนโครงการและยามของคุณ เราจะติดต่อกลับเพื่อนัดเดโมและเสนอราคา</p>
+      <div class="ctas"><a class="btn line" href="https://lin.ee/5e7WMZj" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s6-3.5 8.2-6c1.5-1.7 1.8-3.3 1.8-4.8C22 6.6 17.5 3 12 3z"/></svg><span data-i="ct.cta">เพิ่มเพื่อน LINE</span></a></div>
+    </div>
+    <div class="contact-row">
+      <div class="qrbox"><img src="line-qr.png" alt="LINE QR code"><span data-i="ct.qr">สแกนเพื่อเพิ่มเพื่อน</span></div>
+      <div class="copyline"><code id="line-url">https://lin.ee/5e7WMZj</code><button type="button" id="copy-btn" data-i="ct.copy">คัดลอกลิงก์</button><small data-i="ct.small">เปิดบนมือถือแล้วกดลิงก์ หรือสแกน QR ด้วยกล้อง</small></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="fine" data-i="ft.fine">ข้อมูลบนหน้าจอตัวอย่างเป็นข้อมูลสมมติเพื่อแสดงการทำงาน ฟีเจอร์ที่ระบุว่า "เร็วๆ นี้" อยู่ระหว่างพัฒนา</p>
+    <div class="fcols">
+      <div><h4 data-i="ft.h1">ผลิตภัณฑ์</h4><ul><li><a href="#patrol">Horguard Patrol</a></li><li><a href="#force">Horguard Force</a></li><li><a href="#features" data-i="nav.features">ฟีเจอร์</a></li></ul></div>
+      <div><h4 data-i="ft.h2">สำหรับลูกค้า</h4><ul><li><a href="https://force.horguard.com/" data-i="ft.l1">เข้าสู่ระบบ Force</a></li><li><a href="https://liff.line.me/2010926067-2cuN81fZ" data-i="ft.l2">เปิด Patrol ใน LINE</a></li></ul></div>
+      <div><h4 data-i="ft.h3">ติดต่อ</h4><ul><li><a href="https://lin.ee/5e7WMZj" target="_blank" rel="noopener">LINE OA</a></li><li><a href="#contact" data-i="ft.l3">ขอใบเสนอราคา</a></li></ul></div>
+      <div><h4 data-i="ft.h4">ภาษา</h4><ul><li><a href="#" data-setlang="th">ไทย</a></li><li><a href="#en" data-setlang="en">English</a></li></ul></div>
+    </div>
+    <div class="fbot"><span>© 2026 Horguard</span><span data-i="ft.tag">ระบบบริหารงานรักษาความปลอดภัย · Security Guard Management Platform</span></div>
+  </div>
+</footer>
+
+<a class="fab" href="https://lin.ee/5e7WMZj" target="_blank" rel="noopener" aria-label="LINE"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s6-3.5 8.2-6c1.5-1.7 1.8-3.3 1.8-4.8C22 6.6 17.5 3 12 3z"/></svg><span data-i="ribbon.a2">ทักไลน์</span></a>
+<script>
+const EN={
+ "nav.features":"Features","nav.compare":"Compare","nav.faq":"FAQ","nav.contact":"Contact","nav.signin":"Sign in","ribbon.a2":"LINE us","cmp.swipe":"Swipe to compare ›",
+ "ribbon.t":"Pilot it on one site before you decide. Setup takes a day.","ribbon.a":"Message us ›",
+ "hero.sub":"Proof, every shift, that guards are on post and on patrol.","hero.note":"Security workforce management that guards use inside LINE. No app to install.",
+ "hero.demo":"Book a demo","hero.signin":"Sign in to Force",
+ "board.site":"Riverside Condo","board.shift":"Night shift 19:00–07:00 · 3 posts","board.s1":"On duty","board.s2":"Patrol rounds","board.s3":"Incidents",
+ "board.r1":"Somchai scanned Car park B2","board.p1":"On time","board.r2":"Patrol round · Back gate","board.p2":"Awaiting scan","board.r3":"Incident: corridor lights out, floor 3","board.p3":"Sent to supervisor","board.r4":"Manop clocked in · Front post · GPS + selfie","board.p4":"On site","board.sample":"Sample data",
+ "patrol.h":"Clock in. Patrol. Report.<br>All inside LINE.","patrol.sub":"Guards tap the LINE menu they already have. Works on older phones too.","patrol.cta1":"Book a demo on LINE","patrol.cta2":"See features",
+ "chat.1":"Clocked in 18:52 · Front post","chat.2":"Next patrol 20:00 · 6 points",
+ "rm.1":"Clock in","rm.2":"Clock out","rm.3":"Scan point","rm.4":"Report","rm.5":"My shifts","rm.6":"Leave",
+ "force.h":"Every site. One screen.","force.sub":"Owners, admins and supervisors manage staff, shifts and checkpoints, and watch it all live on the web.","force.cta1":"Sign in to Force","force.cta2":"Open a company account",
+ "lp.n1":"Overview","lp.n2":"Sites","lp.n3":"Staff","lp.n4":"Shifts","lp.n5":"Checkpoints","lp.h":"Today","lp.c1":"Bangkok","lp.c2":"All sites",
+ "lp.t1":"Site","lp.t2":"On duty","lp.t3":"Patrols","lp.t4":"Status","lp.p1":"Riverside Condo","lp.p2":"Bang Phli Factory","lp.p3":"Sathorn Office","lp.p4":"Ratchaphruek Village",
+ "lp.s1":"Normal","lp.s2":"1 short","lp.s3":"Missed patrol","lp.s4":"Normal",
+ "tag.now":"Available","tag.soon":"Coming soon",
+ "g1.h":"GPS + selfie","g1.p":"Confirms the guard is inside the site, stamped with server time.","g1.v1":"On site · 18 m","g1.v2":"Front post · 18:52:07",
+ "g2.h":"QR checkpoints","g2.p":"Print QR codes from Force. Guards scan in LINE and you see it instantly.","g2.v1":"Car park B2",
+ "g3.h":"Shifts and 24-hour posts","g3.p":"Generate a month from templates, or let self-rotating posts skip scheduling.",
+ "d1":"M","d2":"T","d3":"W","d4":"T","d5":"F","d6":"S","d7":"S","lg1":"Day shift","lg2":"Night shift",
+ "g4.h":"Client portal","g4.p":"Property owners view patrols, photo evidence and reports for their own site.","g4.v1":"Last night's patrols","g4.v2":"On-time clock-ins","g4.v3":"Incidents closed",
+ "g5.h":"Missed-patrol alerts","g5.p":"When a round passes its time without scans, supervisors get a LINE message right away.",
+ "g6.h":"Leave, open shifts, payroll","g6.p":"Approve leave, offer open shifts, and total hours with 1.25x / 2.5x OT under the 2026 guard rules.",
+ "cmp.h":"Find the right fit for your company","cmp.c1":"Guard-tour clock / logbook","cmp.c2":"Generic time-clock app",
+ "cmp.a1":"No identity check","cmp.a2":"Patrol results at month end","cmp.a3":"Clients can't check","cmp.a4":"Buy a device for every post",
+ "cmp.b1":"GPS + selfie","cmp.b2":"No checkpoint patrols","cmp.b3":"No 24-hour post support","cmp.b4":"Guards install another app",
+ "cmp.c1x":"GPS + selfie + site boundary check","cmp.c2x":"QR scans, results instantly","cmp.c3x":"24-hour posts and spares built in","cmp.c4x":"Runs in LINE, nothing to install",
+ "faq.h":"Questions",
+ "q1":"Do guards need to download an app?","a1":"No. Guards add the company LINE account and use the menu. Works on iPhone and Android.",
+ "q2":"What about fake GPS or a friend clocking in?","a2":"Every clock-in needs a selfie with location, the system uses server time, and unusual entries are flagged for supervisors, such as odd locations or scans too fast to walk.",
+ "q3":"Do 24-hour posts need scheduling?","a3":"No. Switch the post to no-schedule mode. Assigned guards clock in themselves, and the system warns when a time slot is short-staffed.",
+ "q4":"Is data secure and PDPA compliant?","a4":"Each company's data is separated at the database level. Guards consent before photos and locations are collected, and photo retention can be set.",
+ "q5":"How much does it cost?","a5":"Monthly, per active guard. No hardware and no long lock-in. Message us on LINE for a quote sized to your company.",
+ "q6":"Already a customer? Where do I sign in?","a6":"Owners, admins and supervisors sign in at force.horguard.com with LINE. Guards open it from the menu in your company LINE OA.",
+ "ct.e":"Contact","ct.h":"Talk to the Horguard team","ct.sub":"Tell us how many sites and guards you have. We'll get back to you to book a demo and quote.","ct.cta":"Add us on LINE","ct.qr":"Scan to add friend","ct.copy":"Copy link","ct.copied":"Copied","ct.small":"Open on your phone and tap the link, or scan the QR with your camera.",
+ "ft.fine":"Screens show sample data for illustration. Features marked \"Coming soon\" are in development.","ft.h1":"Products","ft.h2":"Customers","ft.h3":"Contact","ft.h4":"Language","ft.l1":"Sign in to Force","ft.l2":"Open Patrol in LINE","ft.l3":"Request a quote","ft.tag":"Security Guard Management Platform"
+};
+const TH={};
+document.querySelectorAll('[data-i]').forEach(el=>{TH[el.dataset.i]=el.innerHTML;});
+TH["ct.copied"]="คัดลอกแล้ว";
+let lang='th';
+function setLang(l){
+  lang=l;const d=l==='en'?EN:TH;
+  document.querySelectorAll('[data-i]').forEach(el=>{const v=d[el.dataset.i];if(v!=null)el.innerHTML=v;});
+  document.documentElement.lang=l;
+  document.querySelectorAll('button[data-lang]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.lang===l)));
+  try{localStorage.setItem('hg-lang',l);}catch(e){}
+}
+document.querySelectorAll('button[data-lang]').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+const mbtn=document.getElementById('menu-btn');
+function menu(open){document.body.classList.toggle('menu-open',open);mbtn.setAttribute('aria-expanded',String(open));}
+mbtn.addEventListener('click',()=>menu(!document.body.classList.contains('menu-open')));
+document.querySelectorAll('#mmenu a').forEach(a=>a.addEventListener('click',()=>menu(false)));
+addEventListener('keydown',e=>{if(e.key==='Escape')menu(false);});
+addEventListener('resize',()=>{if(innerWidth>820)menu(false);});
+document.querySelectorAll('[data-setlang]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();setLang(a.dataset.setlang);scrollTo({top:0,behavior:'smooth'});}));
+let start='th';
+if(location.hash==='#en'||new URLSearchParams(location.search).get('lang')==='en')start='en';
+else{try{start=localStorage.getItem('hg-lang')||'th';}catch(e){}}
+if(start==='en')setLang('en');
+document.getElementById('copy-btn').addEventListener('click',async e=>{
+  const btn=e.currentTarget,d=()=>lang==='en'?EN:TH;
+  try{await navigator.clipboard.writeText(document.getElementById('line-url').textContent);btn.textContent=d()["ct.copied"];setTimeout(()=>{btn.textContent=d()["ct.copy"];},1600);}
+  catch(err){const r=document.createRange();r.selectNodeContents(document.getElementById('line-url'));const s=getSelection();s.removeAllRanges();s.addRange(r);}
+});
+</script>
+</body>
+</html>
