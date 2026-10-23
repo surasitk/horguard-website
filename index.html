@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Horguard</title>
-<meta name="description" content="Horguard ระบบบริหารงานรักษาความปลอดภัยผ่าน LINE ยามลงเวลาและเดินตรวจในไลน์ หัวหน้าเห็นทุกโครงการในหน้าเดียว">
+<meta name="description" content="Horguard ระบบบริหารงานรักษาความปลอดภัยผ่าน LINE รปภ. ลงเวลาและเดินตรวจในไลน์ หัวหน้าเห็นทุกโครงการในหน้าเดียว">
 <meta property="og:title" content="Horguard — ระบบบริหารงาน รปภ. ผ่าน LINE">
-<meta property="og:description" content="ยามลงเวลาและสแกนจุดตรวจผ่าน LINE หัวหน้าเห็นทุกโครงการในหน้าเดียว">
+<meta property="og:description" content="รปภ. ลงเวลาและสแกนจุดตรวจผ่าน LINE หัวหน้าเห็นทุกโครงการในหน้าเดียว">
 <meta property="og:url" content="https://horguard.com/">
 <meta property="og:image" content="https://horguard.com/og.jpg">
 <meta name="theme-color" content="#ffffff">
@@ -130,6 +130,8 @@ h1,h2,h3{font-weight:600;letter-spacing:-.02em;text-wrap:balance}
 .rich{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.15)}
 .rich div{background:var(--navy);color:#fff;display:grid;justify-items:center;gap:6px;padding:15px 4px 16px;font-size:12px;text-align:center}
 .rich svg{width:22px;height:22px}
+.rich span{white-space:nowrap;letter-spacing:-.01em}
+@media (max-width:420px){.rich div{font-size:11px}}
 
 /* ---------- device: laptop ---------- */
 .laptop{width:min(720px,100%);}
@@ -368,8 +370,8 @@ footer .fine{padding-bottom:16px;border-bottom:1px solid var(--line)}
     <section class="tile white">
       <div class="copy wrap">
         <h1 class="h-hero">Horguard</h1>
-        <p class="sub" data-i="hero.sub">พิสูจน์ได้ทุกกะ ว่ายามอยู่จริง และเดินตรวจจริง</p>
-        <p class="note" data-i="hero.note">ระบบบริหารงาน รปภ. ที่ยามใช้ผ่าน LINE ไม่ต้องลงแอป</p>
+        <p class="sub" data-i="hero.sub">พิสูจน์ได้ทุกกะ ว่า รปภ. อยู่จริง และเดินตรวจจริง</p>
+        <p class="note" data-i="hero.note">ระบบบริหารงาน รปภ. ที่ใช้งานผ่าน LINE ไม่ต้องลงแอป</p>
         <div class="ctas">
           <a class="btn fill" href="https://lin.ee/5e7WMZj" target="_blank" rel="noopener" data-i="hero.demo">ขอดูเดโม</a>
           <a class="btn ghost" href="https://force.horguard.com/" data-i="hero.signin">เข้าสู่ระบบ Force</a>
@@ -382,7 +384,7 @@ footer .fine{padding-bottom:16px;border-bottom:1px solid var(--line)}
             <span class="live"><i></i>LIVE</span>
           </div>
           <div class="stats">
-            <div class="stat"><span data-i="board.s1">ยามเข้างาน</span><b>4/4</b></div>
+            <div class="stat"><span data-i="board.s1">รปภ. เข้างาน</span><b>4/4</b></div>
             <div class="stat"><span data-i="board.s2">รอบตรวจ</span><b>11/12</b></div>
             <div class="stat"><span data-i="board.s3">เหตุการณ์</span><b>1</b></div>
           </div>
@@ -402,7 +404,7 @@ footer .fine{padding-bottom:16px;border-bottom:1px solid var(--line)}
       <div class="copy wrap">
         <p class="eyebrow">Horguard Patrol</p>
         <h2 class="h-tile" data-i="patrol.h">เข้างาน เดินตรวจ แจ้งเหตุ<br>จบในไลน์</h2>
-        <p class="sub" data-i="patrol.sub">ยามกดจากเมนูใน LINE ที่มีอยู่แล้ว มือถือรุ่นเก่าก็ใช้ได้</p>
+        <p class="sub" data-i="patrol.sub">รปภ. กดจากเมนูใน LINE ที่มีอยู่แล้ว มือถือรุ่นเก่าก็ใช้ได้</p>
         <div class="ctas">
           <a class="btn line" href="https://lin.ee/5e7WMZj" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s6-3.5 8.2-6c1.5-1.7 1.8-3.3 1.8-4.8C22 6.6 17.5 3 12 3z"/></svg><span data-i="patrol.cta1">ทักไลน์ ขอดูเดโม</span></a>
           <a class="btn ghost" href="#features" data-i="patrol.cta2">ดูฟีเจอร์</a>
@@ -422,7 +424,7 @@ footer .fine{padding-bottom:16px;border-bottom:1px solid var(--line)}
               <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8V5a1 1 0 011-1h3M16 4h3a1 1 0 011 1v3M20 16v3a1 1 0 01-1 1h-3M8 20H5a1 1 0 01-1-1v-3M4 12h16"/></svg><span data-i="rm.3">สแกนจุด</span></div>
               <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5L21 19.5H3z"/><path d="M12 10v4M12 17v.01"/></svg><span data-i="rm.4">แจ้งเหตุ</span></div>
               <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="16" rx="2"/><path d="M3.5 9.5h17M8 2.5v4M16 2.5v4"/></svg><span data-i="rm.5">กะของฉัน</span></div>
-              <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3.5H6.5a2 2 0 00-2 2v13a2 2 0 002 2h11a2 2 0 002-2V9z"/><path d="M14 3.5V9h5.5M8.5 13h7M8.5 17h4"/></svg><span data-i="rm.6">ขอลา</span></div>
+              <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4 3 6.5v13.5l6-2.5 6 2.5 6-2.5V4l-6 2.5z"/><path d="M9 4v13.5M15 6.5V20"/></svg><span data-i="rm.6">แผนที่กำลังพล</span></div>
             </div>
           </div>
         </div>
@@ -434,7 +436,7 @@ footer .fine{padding-bottom:16px;border-bottom:1px solid var(--line)}
       <div class="copy wrap">
         <p class="eyebrow">Horguard Force</p>
         <h2 class="h-tile" data-i="force.h">ทุกโครงการ ในหน้าจอเดียว</h2>
-        <p class="sub" data-i="force.sub">เจ้าของ แอดมิน และหัวหน้า จัดการพนักงาน กะ และจุดตรวจ แล้วดูภาพรวมสดได้จากเว็บ</p>
+        <p class="sub" data-i="force.sub">เจ้าของและแอดมินจัดการพนักงาน กะ และจุดตรวจ ผู้จัดการโซนดูภาพรวมสดของโซนตัวเอง ใช้ได้ทั้งบนคอมพิวเตอร์และ iPad</p>
         <div class="ctas">
           <a class="btn fill" href="https://force.horguard.com/" data-i="force.cta1">เข้าสู่ระบบ Force</a>
           <a class="btn ghost" href="https://lin.ee/5e7WMZj" target="_blank" rel="noopener" data-i="force.cta2">ขอเปิดบัญชีบริษัท</a>
@@ -482,7 +484,7 @@ footer .fine{padding-bottom:16px;border-bottom:1px solid var(--line)}
       <section class="gtile dark">
         <span class="tag" data-i="tag.now">พร้อมใช้</span>
         <h3 data-i="g2.h">สแกน QR จุดตรวจ</h3>
-        <p data-i="g2.p">พิมพ์ QR จาก Force ติดตามจุด ยามสแกนผ่านไลน์ เห็นผลทันที</p>
+        <p data-i="g2.p">พิมพ์ QR จาก Force ติดตามจุด รปภ. สแกนผ่านไลน์ เห็นผลทันที</p>
         <div class="gviz"><div class="qrcard" aria-hidden="true"><img class="qr" src="cp-qr.png" alt="" width="120" height="120"><b data-i="g2.v1">ลานจอด B2</b><small>CP-0417</small></div></div>
       </section>
       <section class="gtile dark">
@@ -498,7 +500,7 @@ footer .fine{padding-bottom:16px;border-bottom:1px solid var(--line)}
         <span class="tag soon" data-i="tag.soon">เร็วๆ นี้</span>
         <h3 data-i="g4.h">หน้าดูงานสำหรับลูกค้า</h3>
         <p data-i="g4.p">เจ้าของสถานที่เปิดดูรอบตรวจ รูปหลักฐาน และรายงานของโครงการตัวเองได้</p>
-        <div class="gviz"><div class="portal" style="background:var(--navy);color:#fff" aria-hidden="true"><div><span data-i="g4.v1">รอบตรวจเมื่อคืน</span><em>12/12</em></div><div><span data-i="g4.v2">ยามเข้างานตรงเวลา</span><em>100%</em></div><div><span data-i="g4.v3">เหตุการณ์ที่ปิดแล้ว</span><em>3/3</em></div></div></div>
+        <div class="gviz"><div class="portal" style="background:var(--navy);color:#fff" aria-hidden="true"><div><span data-i="g4.v1">รอบตรวจเมื่อคืน</span><em>12/12</em></div><div><span data-i="g4.v2">รปภ. เข้างานตรงเวลา</span><em>100%</em></div><div><span data-i="g4.v3">เหตุการณ์ที่ปิดแล้ว</span><em>3/3</em></div></div></div>
       </section>
       <section class="gtile short">
         <span class="tag soon" data-i="tag.soon">เร็วๆ นี้</span>
@@ -510,6 +512,16 @@ footer .fine{padding-bottom:16px;border-bottom:1px solid var(--line)}
         <h3 data-i="g6.h">ลา กะว่าง และค่าแรง</h3>
         <p data-i="g6.p">อนุมัติลา กระจายกะว่าง และสรุปชั่วโมงพร้อม OT 1.25 / 2.5 เท่า ตามกฎ รปภ. 2569</p>
       </section>
+      <section class="gtile short">
+        <span class="tag" data-i="tag.now">พร้อมใช้</span>
+        <h3 data-i="g7.h">แผนที่กำลังพลใน LINE</h3>
+        <p data-i="g7.p">เจ้าของ แอดมิน ผู้จัดการโซน และครูฝึก เปิดจากเมนูไลน์ เห็นว่าไซต์ไหนคนครบ ไซต์ไหนขาด และมี SOS ทันที</p>
+      </section>
+      <section class="gtile short">
+        <span class="tag" data-i="tag.now">พร้อมใช้</span>
+        <h3 data-i="g8.h">สิทธิ์ตามบทบาท</h3>
+        <p data-i="g8.p">ผู้จัดการโซนดูภาพรวมและแผนที่ของโซนตัวเองโดยไม่เห็นข้อมูลค่าแรง รหัสพนักงานออกให้อัตโนมัติ เบอร์โทรห้ามซ้ำ และปิดใช้ผู้ใช้แล้วออกจากระบบทุกเครื่องทันที</p>
+      </section>
     </div>
   </div>
 
@@ -518,8 +530,8 @@ footer .fine{padding-bottom:16px;border-bottom:1px solid var(--line)}
       <h2 data-i="cmp.h">เลือกให้เหมาะกับบริษัทคุณ</h2>
       <p class="swipe-hint" style="display:none;text-align:center;color:var(--ink-2);font-size:14px;margin:-16px 0 18px" data-i="cmp.swipe">ปัดเพื่อเทียบ ›</p>
       <div class="cols">
-        <div class="col"><h3 data-i="cmp.c1">นาฬิกายาม / สมุด</h3><ul><li class="no" data-i="cmp.a1">ไม่มีการยืนยันตัวตน</li><li data-i="cmp.a2">ดูผลเดินตรวจปลายเดือน</li><li class="no" data-i="cmp.a3">ลูกค้าดูเองไม่ได้</li><li data-i="cmp.a4">ต้องซื้อเครื่องทุกป้อม</li></ul></div>
-        <div class="col"><h3 data-i="cmp.c2">แอปลงเวลาทั่วไป</h3><ul><li data-i="cmp.b1">GPS + เซลฟี่</li><li class="no" data-i="cmp.b2">ไม่มีเดินตรวจตามจุด</li><li class="no" data-i="cmp.b3">ไม่รองรับป้อมควง 24</li><li data-i="cmp.b4">ยามต้องลงแอปเพิ่ม</li></ul></div>
+        <div class="col"><h3 data-i="cmp.c1">นาฬิกาเดินตรวจ / สมุด</h3><ul><li class="no" data-i="cmp.a1">ไม่มีการยืนยันตัวตน</li><li data-i="cmp.a2">ดูผลเดินตรวจปลายเดือน</li><li class="no" data-i="cmp.a3">ลูกค้าดูเองไม่ได้</li><li data-i="cmp.a4">ต้องซื้อเครื่องทุกป้อม</li></ul></div>
+        <div class="col"><h3 data-i="cmp.c2">แอปลงเวลาทั่วไป</h3><ul><li data-i="cmp.b1">GPS + เซลฟี่</li><li class="no" data-i="cmp.b2">ไม่มีเดินตรวจตามจุด</li><li class="no" data-i="cmp.b3">ไม่รองรับป้อมควง 24</li><li data-i="cmp.b4">รปภ. ต้องลงแอปเพิ่ม</li></ul></div>
         <div class="col us"><h3>Horguard</h3><ul><li data-i="cmp.c1x">GPS + เซลฟี่ + ตรวจพื้นที่โครงการ</li><li data-i="cmp.c2x">สแกน QR เห็นผลทันที</li><li data-i="cmp.c3x">ป้อมควง 24 และตัวสแปร์ในตัว</li><li data-i="cmp.c4x">ใช้ผ่าน LINE ไม่ต้องลงแอป</li></ul></div>
       </div>
     </div>
@@ -529,12 +541,12 @@ footer .fine{padding-bottom:16px;border-bottom:1px solid var(--line)}
     <div class="wrap">
       <h2 data-i="faq.h">คำถามที่พบบ่อย</h2>
       <div class="qa">
-        <details><summary data-i="q1">ยามต้องดาวน์โหลดแอปไหม</summary><p data-i="a1">ไม่ต้อง ยามเพิ่มเพื่อน LINE ของบริษัทแล้วกดเมนูได้เลย ใช้ได้ทั้ง iPhone และ Android</p></details>
-        <details><summary data-i="q2">ถ้ายามใช้ GPS ปลอม หรือให้เพื่อนกดแทนล่ะ</summary><p data-i="a2">ทุกการเข้างานต้องมีเซลฟี่คู่กับพิกัด ระบบใช้เวลาจากเซิร์ฟเวอร์ และตั้งธงรายการผิดปกติให้หัวหน้าตรวจ เช่น ตำแหน่งแปลก หรือสแกนจุดเร็วเกินกว่าจะเดินทัน</p></details>
-        <details><summary data-i="q3">ป้อมที่ยามควง 24 ชม. ต้องจัดกะไหม</summary><p data-i="a3">ไม่ต้อง เปิดโหมดไม่จัดกะล่วงหน้าให้ป้อมนั้น ยามที่ผูกกับโครงการเข้างานเองได้ และระบบเตือนเมื่อคนในช่วงเวลานั้นไม่ครบ</p></details>
-        <details><summary data-i="q4">ข้อมูลปลอดภัยและเป็นไปตาม PDPA ไหม</summary><p data-i="a4">ข้อมูลแต่ละบริษัทแยกกันด้วยสิทธิ์ระดับฐานข้อมูล ยามให้ความยินยอมก่อนเก็บรูปและพิกัด และกำหนดระยะเวลาเก็บรูปได้</p></details>
-        <details><summary data-i="q5">ราคาเท่าไร</summary><p data-i="a5">คิดรายเดือนตามจำนวนยามที่ใช้งานจริง ไม่มีค่าเครื่อง ไม่ผูกสัญญายาว ทักไลน์เพื่อรับใบเสนอราคาตามขนาดบริษัท</p></details>
-        <details><summary data-i="q6">เป็นลูกค้าอยู่แล้ว เข้าระบบที่ไหน</summary><p data-i="a6">เจ้าของ แอดมิน และหัวหน้าเข้าที่ force.horguard.com ด้วยบัญชี LINE ส่วนยามเปิดจากเมนูใน LINE OA ของบริษัท</p></details>
+        <details><summary data-i="q1">รปภ. ต้องดาวน์โหลดแอปไหม</summary><p data-i="a1">ไม่ต้อง รปภ. เพิ่มเพื่อน LINE ของบริษัทแล้วกดเมนูได้เลย ใช้ได้ทั้ง iPhone และ Android</p></details>
+        <details><summary data-i="q2">ถ้า รปภ. ใช้ GPS ปลอม หรือให้เพื่อนกดแทนล่ะ</summary><p data-i="a2">ทุกการเข้างานต้องมีเซลฟี่คู่กับพิกัด ระบบใช้เวลาจากเซิร์ฟเวอร์ และตั้งธงรายการผิดปกติให้หัวหน้าตรวจ เช่น ตำแหน่งแปลก หรือสแกนจุดเร็วเกินกว่าจะเดินทัน</p></details>
+        <details><summary data-i="q3">ป้อมที่ รปภ. ควง 24 ชม. ต้องจัดกะไหม</summary><p data-i="a3">ไม่ต้อง เปิดโหมดไม่จัดกะล่วงหน้าให้ป้อมนั้น รปภ. ที่ผูกกับโครงการเข้างานเองได้ และระบบเตือนเมื่อคนในช่วงเวลานั้นไม่ครบ</p></details>
+        <details><summary data-i="q4">ข้อมูลปลอดภัยและเป็นไปตาม PDPA ไหม</summary><p data-i="a4">ข้อมูลแต่ละบริษัทแยกกันด้วยสิทธิ์ระดับฐานข้อมูล รปภ. ให้ความยินยอมก่อนเก็บรูปและพิกัด และกำหนดระยะเวลาเก็บรูปได้</p></details>
+        <details><summary data-i="q5">ราคาเท่าไร</summary><p data-i="a5">คิดรายเดือนตามจำนวน รปภ. ที่ใช้งานจริง ไม่มีค่าเครื่อง ไม่ผูกสัญญายาว ทักไลน์เพื่อรับใบเสนอราคาตามขนาดบริษัท</p></details>
+        <details><summary data-i="q6">เป็นลูกค้าอยู่แล้ว เข้าระบบที่ไหน</summary><p data-i="a6">เจ้าของ แอดมิน ผู้จัดการโซน และหัวหน้ากะ เข้าที่ force.horguard.com ด้วยบัญชี LINE ใช้ได้ทั้งบนคอมพิวเตอร์และ iPad ส่วน รปภ. สายตรวจ และทีมหน้างานเปิดจากเมนูใน LINE OA ของบริษัท</p></details>
       </div>
     </div>
   </section>
@@ -543,7 +555,7 @@ footer .fine{padding-bottom:16px;border-bottom:1px solid var(--line)}
     <div class="copy wrap">
       <p class="eyebrow" data-i="ct.e">ติดต่อเรา</p>
       <h2 class="h-tile" data-i="ct.h">คุยกับทีม Horguard</h2>
-      <p class="sub" data-i="ct.sub">บอกจำนวนโครงการและยามของคุณ เราจะติดต่อกลับเพื่อนัดเดโมและเสนอราคา</p>
+      <p class="sub" data-i="ct.sub">บอกจำนวนโครงการและ รปภ. ของคุณ เราจะติดต่อกลับเพื่อนัดเดโมและเสนอราคา</p>
       <div class="ctas"><a class="btn line" href="https://lin.ee/5e7WMZj" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s6-3.5 8.2-6c1.5-1.7 1.8-3.3 1.8-4.8C22 6.6 17.5 3 12 3z"/></svg><span data-i="ct.cta">เพิ่มเพื่อน LINE</span></a></div>
     </div>
     <div class="contact-row">
@@ -577,8 +589,8 @@ const EN={
  "board.r1":"Somchai scanned Car park B2","board.p1":"On time","board.r2":"Patrol round · Back gate","board.p2":"Awaiting scan","board.r3":"Incident: corridor lights out, floor 3","board.p3":"Sent to supervisor","board.r4":"Manop clocked in · Front post · GPS + selfie","board.p4":"On site","board.sample":"Sample data",
  "patrol.h":"Clock in. Patrol. Report.<br>All inside LINE.","patrol.sub":"Guards tap the LINE menu they already have. Works on older phones too.","patrol.cta1":"Book a demo on LINE","patrol.cta2":"See features",
  "chat.1":"Clocked in 18:52 · Front post","chat.2":"Next patrol 20:00 · 6 points",
- "rm.1":"Clock in","rm.2":"Clock out","rm.3":"Scan point","rm.4":"Report","rm.5":"My shifts","rm.6":"Leave",
- "force.h":"Every site. One screen.","force.sub":"Owners, admins and supervisors manage staff, shifts and checkpoints, and watch it all live on the web.","force.cta1":"Sign in to Force","force.cta2":"Open a company account",
+ "rm.1":"Clock in","rm.2":"Clock out","rm.3":"Scan point","rm.4":"Report","rm.5":"My shifts","rm.6":"Force map",
+ "force.h":"Every site. One screen.","force.sub":"Owners and admins manage staff, shifts and checkpoints. Zone managers watch their zone live. Works on desktop and iPad.","force.cta1":"Sign in to Force","force.cta2":"Open a company account",
  "lp.n1":"Overview","lp.n2":"Sites","lp.n3":"Staff","lp.n4":"Shifts","lp.n5":"Checkpoints","lp.h":"Today","lp.c1":"Bangkok","lp.c2":"All sites",
  "lp.t1":"Site","lp.t2":"On duty","lp.t3":"Patrols","lp.t4":"Status","lp.p1":"Riverside Condo","lp.p2":"Bang Phli Factory","lp.p3":"Sathorn Office","lp.p4":"Ratchaphruek Village",
  "lp.s1":"Normal","lp.s2":"1 short","lp.s3":"Missed patrol","lp.s4":"Normal",
@@ -590,6 +602,8 @@ const EN={
  "g4.h":"Client portal","g4.p":"Property owners view patrols, photo evidence and reports for their own site.","g4.v1":"Last night's patrols","g4.v2":"On-time clock-ins","g4.v3":"Incidents closed",
  "g5.h":"Missed-patrol alerts","g5.p":"When a round passes its time without scans, supervisors get a LINE message right away.",
  "g6.h":"Leave, open shifts, payroll","g6.p":"Approve leave, offer open shifts, and total hours with 1.25x / 2.5x OT under the 2026 guard rules.",
+ "g7.h":"Force map in LINE","g7.p":"Owners, admins, zone managers and trainers open it from the LINE menu to see which sites are fully staffed, which are short, and any SOS, instantly.",
+ "g8.h":"Role-based access","g8.p":"Zone managers see the overview and map for their zone without wage data. Employee IDs are issued automatically, phone numbers can't be reused, and deactivated users are signed out on every device at once.",
  "cmp.h":"Find the right fit for your company","cmp.c1":"Guard-tour clock / logbook","cmp.c2":"Generic time-clock app",
  "cmp.a1":"No identity check","cmp.a2":"Patrol results at month end","cmp.a3":"Clients can't check","cmp.a4":"Buy a device for every post",
  "cmp.b1":"GPS + selfie","cmp.b2":"No checkpoint patrols","cmp.b3":"No 24-hour post support","cmp.b4":"Guards install another app",
@@ -600,7 +614,7 @@ const EN={
  "q3":"Do 24-hour posts need scheduling?","a3":"No. Switch the post to no-schedule mode. Assigned guards clock in themselves, and the system warns when a time slot is short-staffed.",
  "q4":"Is data secure and PDPA compliant?","a4":"Each company's data is separated at the database level. Guards consent before photos and locations are collected, and photo retention can be set.",
  "q5":"How much does it cost?","a5":"Monthly, per active guard. No hardware and no long lock-in. Message us on LINE for a quote sized to your company.",
- "q6":"Already a customer? Where do I sign in?","a6":"Owners, admins and supervisors sign in at force.horguard.com with LINE. Guards open it from the menu in your company LINE OA.",
+ "q6":"Already a customer? Where do I sign in?","a6":"Owners, admins, zone managers and shift leaders sign in at force.horguard.com with LINE, on desktop or iPad. Guards, patrol supervisors and field staff open it from the menu in your company LINE OA.",
  "ct.e":"Contact","ct.h":"Talk to the Horguard team","ct.sub":"Tell us how many sites and guards you have. We'll get back to you to book a demo and quote.","ct.cta":"Add us on LINE","ct.qr":"Scan to add friend","ct.copy":"Copy link","ct.copied":"Copied","ct.small":"Open on your phone and tap the link, or scan the QR with your camera.",
  "ft.fine":"Screens show sample data for illustration. Features marked \"Coming soon\" are in development.","ft.h1":"Products","ft.h2":"Customers","ft.h3":"Contact","ft.h4":"Language","ft.l1":"Sign in to Force","ft.l2":"Open Patrol in LINE","ft.l3":"Request a quote","ft.tag":"Security Guard Management Platform","ft.privacy":"Privacy notice"
 };
