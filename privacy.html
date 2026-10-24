@@ -2,6 +2,7 @@
 <html lang="th">
 <head>
 <meta charset="utf-8">
+<meta name="theme-color" content="#002B58">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>ประกาศความเป็นส่วนตัว · Horguard</title>
 <meta name="description" content="ประกาศความเป็นส่วนตัวสำหรับพนักงานรักษาความปลอดภัยที่ใช้ Horguard Patrol">
@@ -9,31 +10,32 @@
 <link rel="icon" type="image/png" href="icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;600;700&display=swap">
 <style>
-/* Layout: single reading column (max 720px) under the same thin apple-style nav as horguard.com; navy CI for headings, numbered sections because the notice is a referenced legal document. */
+/* Single reading column (max 720px) under the same night-navy header as horguard.com; numbered sections because the notice is a referenced legal document. */
 :root{
-  --navy:#002B58; --ink:#1D1D1F; --ink-2:#6E6E73; --tile:#F5F5F7; --white:#FFFFFF; --line:#D2D2D7; --link:#0A5BC4;
-  --font:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue","Noto Sans Thai",system-ui,sans-serif;
+  --navy:#002B58; --ink:#0F1B2D; --ink-2:#46566C; --tile:#F1F3F5; --white:#FFFFFF; --line:rgba(15,27,45,.14); --link:#0B4F9C; --lamp:#F5A524; --mist:#A9BBD1;
+  --font:"Anuphan",system-ui,-apple-system,"Segoe UI",sans-serif;
   color-scheme:light;
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--white);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--tile);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased}
 :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 a{color:var(--link)}
-:focus-visible{outline:2px solid var(--link);outline-offset:3px;border-radius:6px}
+:focus-visible{outline:2px solid var(--lamp);outline-offset:3px;border-radius:6px}
 .wrap{max-width:720px;margin:0 auto;padding-left:max(22px,env(safe-area-inset-left,0px));padding-right:max(22px,env(safe-area-inset-right,0px))}
-.gnav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:rgba(255,255,255,.85);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,.08)}
-.gnav .wrap{display:flex;align-items:center;justify-content:space-between;height:48px;max-width:1024px}
-.gnav img{height:18px;width:auto;display:block}
-.gnav a.back{font-size:13px;text-decoration:none}
-header.hero{background:var(--tile);padding-block:48px 36px}
-.eyebrow{font-size:15px;font-weight:600;color:var(--ink-2);margin:0 0 6px}
-h1{font-size:clamp(30px,5vw,44px);line-height:1.15;letter-spacing:-.02em;margin:0 0 12px;color:var(--navy);text-wrap:balance}
-.meta{font-size:14px;color:var(--ink-2);margin:0}
-.meta b{color:var(--ink)}
+.gnav{position:sticky;top:0;z-index:10;background:var(--navy);color:#fff;padding-top:env(safe-area-inset-top,0px)}
+.gnav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:1200px}
+.gnav img{height:20px;width:auto;display:block;filter:brightness(0) invert(1)}
+.gnav a.back{font-size:15px;text-decoration:none;color:#fff;opacity:.85}
+.gnav a.back:hover{opacity:1}
+header.hero{background:var(--navy);color:#fff;padding-block:56px 48px}
+.eyebrow{font-size:15px;font-weight:500;color:var(--lamp);margin:0 0 10px}
+h1{font-size:clamp(30px,5vw,46px);line-height:1.22;letter-spacing:-.02em;margin:0 0 14px;color:#fff;text-wrap:balance;font-weight:600}
+.meta{font-size:15px;color:var(--mist);margin:0}
+.meta b{color:#fff}
 main{padding-block:32px 64px}
-.toc{border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin-bottom:36px;font-size:15px}
+.toc{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin-bottom:36px;font-size:15px}
 .toc p{margin:0 0 8px;font-weight:600}
 .toc ol{margin:0;padding-left:20px;columns:2;column-gap:28px}
 .toc li{break-inside:avoid;margin-bottom:4px}
@@ -48,13 +50,13 @@ li{margin-bottom:6px}
 .tbl{overflow-x:auto;margin:6px 0 14px;border:1px solid var(--line);border-radius:12px}
 table{border-collapse:collapse;width:100%;min-width:540px;font-size:15px}
 th,td{text-align:left;vertical-align:top;padding:10px 14px;border-bottom:1px solid var(--line)}
-th{background:var(--tile);font-weight:600;font-size:14px}
+th{background:#E8ECF0;font-weight:600;font-size:14px}
 tr:last-child td{border-bottom:0}
-.note{background:var(--tile);border-radius:12px;padding:14px 18px;font-size:15px;color:var(--ink)}
+.note{background:var(--white);border-radius:12px;padding:14px 18px;font-size:15px;color:var(--ink)}
 .draft{border:1px dashed #B26B00;color:#7A4A00;background:#FFF6E5;border-radius:12px;padding:12px 16px;font-size:14px;margin-bottom:24px}
-footer{background:var(--tile);color:var(--ink-2);font-size:12px;padding-block:24px 36px}
+footer{background:#00142A;color:var(--mist);font-size:13px;padding-block:28px 40px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;max-width:1024px}
-footer a{color:var(--ink-2)}
+footer a{color:var(--mist)}
 @media print{.gnav,.toc,footer{display:none}body{font-size:12pt}}
 </style>
 </head>
