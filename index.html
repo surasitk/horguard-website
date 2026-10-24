@@ -445,6 +445,80 @@ details[open] summary::after{top:26px}
   .phone{width:min(300px,100%)}
 }
 @media (max-width:360px){.h-hero{font-size:40px}.h-tile{font-size:28px}.gtile h3{font-size:28px}}
+
+/* ================= มีอะไรใหม่ (What's new) ================= */
+.whatsnew{background:var(--white);padding-block:72px}
+.sec-h{text-align:center;display:grid;gap:12px;justify-items:center;margin-bottom:40px}
+.sec-h h2{font-size:44px;line-height:1.15}
+.sec-h .sub{color:var(--ink-2)}
+.ncards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.ncard{background:var(--tile);border-radius:24px;padding:28px 26px 30px;display:grid;gap:10px;align-content:start;text-align:left;min-width:0}
+.ncard .ic{width:44px;height:44px;border-radius:12px;background:#fff;display:grid;place-items:center;color:var(--navy)}
+.ncard .ic svg{width:24px;height:24px}
+.ncard h3{font-size:22px;line-height:1.25}
+.ncard p{font-size:16px;line-height:1.5;color:var(--ink-2)}
+.nh{display:flex;align-items:center;gap:12px}
+.ncard .new{justify-self:start;font-size:12px;font-weight:600;line-height:1.4;padding:2px 10px;border-radius:980px;background:#E3EEFB;color:var(--link)}
+.ncard.hero{grid-column:span 2;background:var(--navy);color:#fff;grid-template-columns:1fr 1fr;gap:10px 28px;align-items:center}
+.ncard.hero .txt{display:grid;gap:10px;align-content:start}
+.ncard.hero p{color:var(--on-dark-2)}
+.ncard.hero .ic{background:rgba(255,255,255,.12);color:#fff}
+.ncard.hero .new{background:rgba(94,168,255,.18);color:var(--link-on-dark)}
+.ncard.wide{grid-column:span 2}
+.tl{background:rgba(255,255,255,.07);border-radius:18px;padding:16px;display:grid;gap:4px;font-size:13px;line-height:1.4;min-width:0}
+.tl-h{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:6px}
+.tl-h b{font-size:14px}
+.st{font-size:12px;padding:2px 9px;border-radius:980px;white-space:nowrap;font-weight:600}
+.st.open{background:#FBE3E1;color:#B3261E}.st.done{background:#DDEFE4;color:#1E7F55}
+.tl ol{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.tl li{display:grid;grid-template-columns:44px 1fr;gap:10px;padding:7px 0;border-top:1px solid rgba(255,255,255,.08)}
+.tl li:first-child{border-top:0}
+.tl time{color:var(--on-dark-2);font-variant-numeric:tabular-nums}
+.tl small{display:block;color:var(--on-dark-2)}
+@media (max-width:900px){.ncards{grid-template-columns:1fr 1fr}.ncard.wide{grid-column:auto}}
+@media (max-width:760px){.ncard.hero{grid-template-columns:1fr}}
+@media (max-width:600px){
+  .whatsnew,.devices{padding-block:56px}
+  .sec-h{margin-bottom:28px}
+  .sec-h h2{font-size:32px}
+  .ncards{grid-template-columns:1fr}
+  .ncard.hero{grid-column:auto}
+  .ncard{padding:24px 20px 26px;border-radius:20px}
+}
+
+/* ================= ใช้ได้ทุกหน้าจอ (Devices) ================= */
+.devices{background:var(--tile);padding-block:72px;overflow:hidden}
+.devrow{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-end;gap:44px 44px;--h:280px}
+.dgroup{display:grid;gap:14px;justify-items:center;margin:0;flex:none}
+.dpair{display:flex;align-items:flex-end;gap:14px}
+.dev{background:#0B0F14;padding:6px;border-radius:26px;box-shadow:0 24px 40px -26px rgba(0,27,56,.55);position:relative;flex:none}
+.dev img{height:var(--h);width:auto;border-radius:20px;background:#fff}
+.dev.sm img{height:calc(var(--h) * .5)}
+.dev.tab{border-radius:22px;padding:8px}
+.dev.tab img{border-radius:14px;height:calc(var(--h) * 1.05)}
+.dev.fold::after{content:"";position:absolute;top:6px;bottom:6px;left:50%;width:1px;background:linear-gradient(rgba(0,0,0,.18),rgba(0,0,0,.05),rgba(0,0,0,.18))}
+.dev.flip::after{content:"";position:absolute;left:6px;right:6px;top:50%;height:1px;background:linear-gradient(90deg,rgba(0,0,0,.18),rgba(0,0,0,.05),rgba(0,0,0,.18))}
+.dgroup figcaption{text-align:center;display:grid;gap:2px}
+.dgroup figcaption b{font-size:17px;font-weight:600}
+.dgroup figcaption span{font-size:13px;color:var(--ink-2)}
+.devuse{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:48px}
+.devuse div{background:#fff;border-radius:20px;padding:22px 24px;display:grid;gap:6px;text-align:left}
+.devuse b{font-size:19px}
+.devuse p{font-size:15px;color:var(--ink-2)}
+.chiplist{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:28px;padding:0;list-style:none}
+.chiplist li{background:#fff;border:1px solid var(--line);border-radius:980px;padding:6px 14px;font-size:14px;white-space:nowrap}
+.devnote{text-align:center;font-size:13px;color:var(--ink-2);margin-top:14px}
+@media (max-width:1100px){.devrow{--h:250px;gap:36px 32px}}
+@media (max-width:760px){
+  .devrow{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;scroll-snap-type:x mandatory;gap:28px;--h:300px;
+    margin-inline:calc(-1 * max(22px,env(safe-area-inset-left,0px)));padding:8px max(22px,env(safe-area-inset-left,0px)) 18px;scrollbar-width:none}
+  .devrow::-webkit-scrollbar{display:none}
+  .dgroup{scroll-snap-align:center}
+  .devuse{grid-template-columns:1fr}
+  .swipe-dev{display:block!important}
+}
+@media (max-width:420px){.devrow{--h:250px}.dpair{gap:10px}}
+@media (max-width:1100px) and (min-width:821px){.gnav nav{gap:20px}}
 </style>
 </head>
 <body>
@@ -456,6 +530,7 @@ details[open] summary::after{top:26px}
       <a href="#patrol">Patrol</a>
       <a href="#force">Force</a>
       <a href="#features" data-i="nav.features">ฟีเจอร์</a>
+      <a href="#new" data-i="nav.new">มีอะไรใหม่</a>
       <a href="#compare" data-i="nav.compare">เปรียบเทียบ</a>
       <a href="#faq" data-i="nav.faq">คำถาม</a>
       <a href="#contact" data-i="nav.contact">ติดต่อ</a>
@@ -474,6 +549,8 @@ details[open] summary::after{top:26px}
   <a class="big" href="#patrol">Horguard Patrol</a>
   <a class="big" href="#force">Horguard Force</a>
   <a class="big" href="#features" data-i="nav.features">ฟีเจอร์</a>
+  <a class="big" href="#new" data-i="nav.new">มีอะไรใหม่</a>
+  <a class="big" href="#devices" data-i="nav.devices">รองรับหน้าจอ</a>
   <a class="big" href="#compare" data-i="nav.compare">เปรียบเทียบ</a>
   <a class="big" href="#faq" data-i="nav.faq">คำถาม</a>
   <a class="big" href="#contact" data-i="nav.contact">ติดต่อ</a>
@@ -651,6 +728,91 @@ details[open] summary::after{top:26px}
     </div>
   </div>
 
+
+  <section class="whatsnew" id="new">
+    <div class="wrap">
+      <div class="sec-h">
+        <p class="eyebrow" data-i="new.e">อัปเดตล่าสุด · ตุลาคม 2569</p>
+        <h2 data-i="new.h">มีอะไรใหม่ใน Horguard</h2>
+        <p class="sub" data-i="new.sub">ฟีเจอร์ใหม่ที่ช่วยให้หัวหน้ารับมือเหตุได้เร็วขึ้น และมั่นใจว่าคนที่ลงเวลาคือตัวจริง</p>
+      </div>
+      <div class="ncards">
+      <article class="ncard hero">
+        <div class="txt">
+          <div class="nh"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></span><span class="new" data-i="new.tag">ใหม่</span></div>
+          <h3 data-i="new.sos.h">SOS เป็น Ticket ติดตามได้จนปิดเรื่อง</h3>
+          <p data-i="new.sos.p">ทุกเหตุที่ รปภ. แจ้งจาก LINE กลายเป็น Ticket ใน Force มีสถานะ รับเรื่อง → ถึงที่เกิดเหตุ → ปิดเรื่อง บันทึกว่าใครทำอะไร เมื่อไหร่ เห็นแผนที่และระยะห่างจากโครงการ รูปและเสียงจากหน้างาน และ Export Excel ได้</p>
+        </div>
+        <div class="tl" aria-hidden="true">
+          <div class="tl-h"><b data-i="new.tl.t">#A1B2C3 · บุคคลน่าสงสัย</b><span class="st done" data-i="new.tl.s">ปิดเรื่อง</span></div>
+          <ol>
+            <li><time>21:02</time><span data-i="new.tl.1">สมชาย แจ้ง SOS จาก LINE<small>แนบรูป + เสียง 15 วิ</small></span></li>
+            <li><time>21:03</time><span data-i="new.tl.2">แอดมิน รับเรื่อง<small>"ส่งสายตรวจไปแล้ว"</small></span></li>
+            <li><time>21:11</time><span data-i="new.tl.3">สายตรวจ ถึงที่เกิดเหตุ<small>ห่างจุดแจ้ง 85 ม.</small></span></li>
+            <li><time>21:30</time><span data-i="new.tl.4">ปิดเรื่อง · ใช้เวลา 28 นาที</span></li>
+          </ol>
+        </div>
+      </article>
+      <article class="ncard">
+        <div class="nh"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg></span><span class="new" data-i="new.tag">ใหม่</span></div>
+        <h3 data-i="new.ban.h">ดีดออก หรือแบนชั่วคราว</h3>
+        <p data-i="new.ban.p">ให้ผู้ใช้ออกจากระบบทุกเครื่องได้ในคลิกเดียว หรือแบน 1–30 วัน ผู้ถูกแบนได้รับแจ้งเหตุผลทาง LINE ทันที</p>
+      </article>
+      <article class="ncard">
+        <div class="nh"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><path d="M12 7v3M12 13h.01"/></svg></span><span class="new" data-i="new.tag">ใหม่</span></div>
+        <h3 data-i="new.gps.h">ตรวจจับพิกัดปลอม</h3>
+        <p data-i="new.gps.p">ระบบติดธงการลงเวลาที่พิกัดน่าสงสัย แสดงในมอนิเตอร์ และรวมเป็นรายงานให้หัวหน้าตรวจและบันทึกผล</p>
+      </article>
+      <article class="ncard">
+        <div class="nh"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></span><span class="new" data-i="new.tag">ใหม่</span></div>
+        <h3 data-i="new.face.h">เห็นหน้าทุกคน</h3>
+        <p data-i="new.face.p">รูปโปรไฟล์ LINE ขึ้นในรายชื่อ มอนิเตอร์ และแผนที่กำลังพล หัวหน้ารู้ทันทีว่าใครเป็นใคร</p>
+      </article>
+      <article class="ncard">
+        <div class="nh"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg></span><span class="new" data-i="new.tag">ใหม่</span></div>
+        <h3 data-i="new.phone.h">ลงเวลาได้จากมือถือตัวเองเท่านั้น</h3>
+        <p data-i="new.phone.p">รปภ. หัวหน้ากะ และสแปร์ ลงเวลาจากแท็บเล็ตกลางแทนกันไม่ได้ ส่วนผู้บริหารยังใช้ iPad ได้ตามปกติ</p>
+      </article>
+      <article class="ncard">
+        <div class="nh"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span><span class="new" data-i="new.tag">ใหม่</span></div>
+        <h3 data-i="new.fast.h">เปิดเร็วขึ้น แม้เน็ตหน้างานช้า</h3>
+        <p data-i="new.fast.p">หน้าจอแสดงโครงก่อนข้อมูลมา และจำรายชื่อที่ใช้บ่อยไว้ เปลี่ยนหน้าได้ไวขึ้น</p>
+      </article>
+      <article class="ncard wide">
+        <div class="nh"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6.5v13.5l6-2.5 6 2.5 6-2.5V4l-6 2.5z"/><path d="M9 4v13.5M15 6.5V20"/></svg></span><span class="new" data-i="new.tag">ใหม่</span></div>
+        <h3 data-i="new.zone.h">บทบาทผู้จัดการโซน</h3>
+        <p data-i="new.zone.p">สำหรับคนดูแลหลายไซต์ เห็นภาพรวม แผนที่กำลังพล SOS และรายงานของโซนตัวเองแบบดูอย่างเดียว โดยไม่เห็นข้อมูลค่าแรง</p>
+      </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="devices" id="devices">
+    <div class="wrap">
+      <div class="sec-h">
+        <p class="eyebrow" data-i="dev.e">รองรับทุกหน้าจอ</p>
+        <h2 data-i="dev.h">ใช้ได้ทุกหน้าจอ ตั้งแต่จอพับถึง iPad</h2>
+        <p class="sub" data-i="dev.sub">ทุกหน้าปรับตามขนาดจออัตโนมัติ ทั้งมือถือ จอพับ แท็บเล็ต และคอมพิวเตอร์</p>
+      </div>
+      <p class="swipe-dev" style="display:none;text-align:center;color:var(--ink-2);font-size:14px;margin:-12px 0 14px" data-i="dev.swipe">ปัดเพื่อดูรุ่นอื่น ›</p>
+      <div class="devrow">
+        <figure class="dgroup"><div class="dev"><img src="img/devices/iphone17pro.webp" width="402" height="874" alt="Horguard Patrol บน iPhone 17 Pro" loading="lazy" decoding="async"></div><figcaption><b>iPhone 17 Pro</b><span data-i="dev.c1">Patrol ใน LINE</span></figcaption></figure>
+        <figure class="dgroup"><div class="dpair"><div class="dev"><img src="img/devices/duo-folded.webp" width="474" height="696" alt="Patrol บน iPhone Duo แบบพับ" loading="lazy" decoding="async"></div><div class="dev fold"><img src="img/devices/duo-open.webp" width="640" height="904" alt="Force บน iPhone Duo แบบกาง" loading="lazy" decoding="async"></div></div><figcaption><b>iPhone Duo</b><span data-i="dev.c2">พับ · กาง</span></figcaption></figure>
+        <figure class="dgroup"><div class="dpair"><div class="dev sm"><img src="img/devices/flip-cover.webp" width="360" height="400" alt="Patrol บนจอนอก Galaxy Z Flip" loading="lazy" decoding="async"></div><div class="dev flip"><img src="img/devices/flip-open.webp" width="412" height="915" alt="Patrol บน Galaxy Z Flip แบบกาง" loading="lazy" decoding="async"></div></div><figcaption><b>Galaxy Z Flip</b><span data-i="dev.c3">จอนอก · กาง</span></figcaption></figure>
+        <figure class="dgroup"><div class="dpair"><div class="dev"><img src="img/devices/fold-cover.webp" width="412" height="915" alt="Force บนจอนอก Galaxy Z Fold" loading="lazy" decoding="async"></div><div class="dev fold"><img src="img/devices/fold-open.webp" width="673" height="841" alt="Force บน Galaxy Z Fold แบบกาง" loading="lazy" decoding="async"></div></div><figcaption><b>Galaxy Z Fold</b><span data-i="dev.c4">จอนอก · กาง</span></figcaption></figure>
+        <figure class="dgroup"><div class="dev tab"><img src="img/devices/ipad.webp" width="1180" height="820" alt="Force บน iPad" loading="lazy" decoding="async"></div><figcaption><b>iPad</b><span data-i="dev.c5">Force · แนวนอนและแนวตั้ง</span></figcaption></figure>
+      </div>
+      <div class="devuse">
+        <div><b data-i="dev.u1h">รปภ. ใช้ผ่าน LINE บนมือถือเครื่องไหนก็ได้</b><p data-i="dev.u1p">ไม่ต้องลงแอปเพิ่ม เปิดจากเมนูใน LINE OA ของบริษัท ใช้ได้ทั้ง iPhone และ Android รวมถึงมือถือรุ่นเก่า</p></div>
+        <div><b data-i="dev.u2h">หัวหน้าเปิด Force บนเบราว์เซอร์</b><p data-i="dev.u2p">force.horguard.com ใช้ได้บนมือถือ แท็บเล็ต และคอมพิวเตอร์ เมนูและตารางปรับตามขนาดจอ</p></div>
+      </div>
+      <ul class="chiplist" aria-label="รุ่นที่รองรับ">
+        <li data-i="dev.l1">iPhone 15 · 16 · 17 ทุกรุ่น</li><li>iPhone Duo</li><li>Galaxy Z Fold / Z Flip</li><li>Galaxy A / S</li><li>OPPO</li><li>Xiaomi / Redmi</li><li>vivo</li><li>realme</li><li data-i="dev.l2">iPad ทุกรุ่น</li><li>Galaxy Tab</li>
+      </ul>
+      <p class="devnote" data-i="dev.note">ทดสอบทุกหน้าที่ความกว้างจอ 320–1440 px</p>
+    </div>
+  </section>
+
   <section class="compare" id="compare">
     <div class="wrap">
       <h2 data-i="cmp.h">เลือกให้เหมาะกับบริษัทคุณ</h2>
@@ -673,6 +835,7 @@ details[open] summary::after{top:26px}
         <details><summary data-i="q4">ข้อมูลปลอดภัยและเป็นไปตาม PDPA ไหม</summary><p data-i="a4">ข้อมูลแต่ละบริษัทแยกกันด้วยสิทธิ์ระดับฐานข้อมูล รปภ. ให้ความยินยอมก่อนเก็บรูปและพิกัด และกำหนดระยะเวลาเก็บรูปได้</p></details>
         <details><summary data-i="q5">ราคาเท่าไร</summary><p data-i="a5">คิดรายเดือนตามจำนวน รปภ. ที่ใช้งานจริง ไม่มีค่าเครื่อง ไม่ผูกสัญญายาว ทักไลน์เพื่อรับใบเสนอราคาตามขนาดบริษัท</p></details>
         <details><summary data-i="q6">เป็นลูกค้าอยู่แล้ว เข้าระบบที่ไหน</summary><p data-i="a6">เจ้าของ แอดมิน ผู้จัดการโซน และหัวหน้ากะ เข้าที่ force.horguard.com ด้วยบัญชี LINE ใช้ได้ทั้งบนคอมพิวเตอร์และ iPad ส่วน รปภ. สายตรวจ และทีมหน้างานเปิดจากเมนูใน LINE OA ของบริษัท</p></details>
+        <details><summary data-i="q7">ใช้กับมือถือหรือแท็บเล็ตรุ่นไหนได้บ้าง</summary><p data-i="a7">รปภ. ใช้ผ่าน LINE บนมือถือ iPhone และ Android ได้ทุกรุ่นที่ติดตั้ง LINE ได้ ส่วน Force เปิดบนเบราว์เซอร์ได้ทั้งมือถือ จอพับอย่าง iPhone Duo และ Galaxy Z Fold / Z Flip แท็บเล็ต และคอมพิวเตอร์ ทั้งนี้ รปภ. หัวหน้ากะ และสแปร์ ลงเวลาได้จากมือถือเท่านั้น</p></details>
       </div>
     </div>
   </section>
@@ -695,7 +858,7 @@ details[open] summary::after{top:26px}
   <div class="wrap">
     <p class="fine" data-i="ft.fine">ข้อมูลบนหน้าจอตัวอย่างเป็นข้อมูลสมมติเพื่อแสดงการทำงาน ฟีเจอร์ที่ระบุว่า "เร็วๆ นี้" อยู่ระหว่างพัฒนา</p>
     <div class="fcols">
-      <div><h4 data-i="ft.h1">ผลิตภัณฑ์</h4><ul><li><a href="#patrol">Horguard Patrol</a></li><li><a href="#force">Horguard Force</a></li><li><a href="#features" data-i="nav.features">ฟีเจอร์</a></li></ul></div>
+      <div><h4 data-i="ft.h1">ผลิตภัณฑ์</h4><ul><li><a href="#patrol">Horguard Patrol</a></li><li><a href="#force">Horguard Force</a></li><li><a href="#features" data-i="nav.features">ฟีเจอร์</a></li><li><a href="#new" data-i="nav.new">มีอะไรใหม่</a></li><li><a href="#devices" data-i="nav.devices">รองรับหน้าจอ</a></li></ul></div>
       <div><h4 data-i="ft.h2">สำหรับลูกค้า</h4><ul><li><a href="https://force.horguard.com/" target="_blank" rel="noopener" data-i="ft.l1">เข้าสู่ระบบ Force</a></li><li><a href="https://liff.line.me/2010926067-2cuN81fZ" target="_blank" rel="noopener" data-i="ft.l2">เปิด Patrol ใน LINE</a></li></ul></div>
       <div><h4 data-i="ft.h3">ติดต่อ</h4><ul><li><a href="https://lin.ee/5e7WMZj" target="_blank" rel="noopener">LINE OA</a></li><li><a href="#contact" data-i="ft.l3">ขอใบเสนอราคา</a></li></ul></div>
       <div><h4 data-i="ft.h4">ภาษา</h4><ul><li><a href="#" data-setlang="th">ไทย</a></li><li><a href="#en" data-setlang="en">English</a></li></ul></div>
@@ -707,6 +870,22 @@ details[open] summary::after{top:26px}
 <a class="fab" href="https://lin.ee/5e7WMZj" target="_blank" rel="noopener" aria-label="LINE"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s6-3.5 8.2-6c1.5-1.7 1.8-3.3 1.8-4.8C22 6.6 17.5 3 12 3z"/></svg><span data-i="ribbon.a2">ทักไลน์</span></a>
 <script>
 const EN={
+ "nav.new":"What's new","nav.devices":"Devices",
+ "new.e":"Latest update · October 2026","new.h":"What's new in Horguard","new.sub":"New features that help supervisors respond faster, and make sure the person clocking in is really who they say.","new.tag":"New",
+ "new.sos.h":"SOS becomes a ticket, tracked until closed","new.sos.p":"Every alert a guard sends from LINE becomes a ticket in Force with statuses (acknowledged → on site → closed), a log of who did what and when, a map with distance from the site, photos and voice from the scene, and Excel export.",
+ "new.tl.t":"#A1B2C3 · Suspicious person","new.tl.s":"Closed","new.tl.1":"Somchai sent SOS from LINE<small>Photo + 15 s voice</small>","new.tl.2":"Admin acknowledged<small>\"Patrol dispatched\"</small>","new.tl.3":"Patrol on site<small>85 m from the alert</small>","new.tl.4":"Closed · 28 minutes",
+ "new.ban.h":"Sign out or temporarily ban","new.ban.p":"Sign a user out of every device in one click, or ban them for 1–30 days. They get the reason on LINE right away.",
+ "new.gps.h":"Fake-GPS detection","new.gps.p":"Clock-ins with suspicious locations are flagged in the monitor and collected into a report for supervisors to review and record a decision.",
+ "new.face.h":"See every face","new.face.p":"LINE profile photos show in the staff list, monitor and force map, so supervisors know who's who at a glance.",
+ "new.phone.h":"Clock in from your own phone only","new.phone.p":"Guards, shift leaders and spares can't clock in for each other from a shared tablet. Managers can still use an iPad.",
+ "new.fast.h":"Faster, even on slow site networks","new.fast.p":"Pages show their layout before data arrives and remember frequently used lists, so switching screens is quicker.",
+ "new.zone.h":"Zone manager role","new.zone.p":"For people who oversee several sites: view-only access to the overview, force map, SOS and reports for their zone, without wage data.",
+ "dev.e":"Every screen","dev.h":"Works on every screen, from foldables to iPad","dev.sub":"Every page adapts to the screen: phones, foldables, tablets and computers.","dev.swipe":"Swipe for more devices ›",
+ "dev.c1":"Patrol in LINE","dev.c2":"Folded · Open","dev.c3":"Cover · Open","dev.c4":"Cover · Open","dev.c5":"Force · landscape and portrait",
+ "dev.u1h":"Guards use LINE on any phone","dev.u1p":"Nothing to install. Open it from your company LINE OA menu on iPhone or Android, older phones included.",
+ "dev.u2h":"Supervisors open Force in the browser","dev.u2p":"force.horguard.com works on phones, tablets and computers. Menus and tables adapt to the screen size.",
+ "dev.l1":"iPhone 15 · 16 · 17, all models","dev.l2":"Every iPad","dev.note":"Every page tested at screen widths from 320 to 1440 px",
+ "q7":"Which phones and tablets are supported?","a7":"Guards use LINE on any iPhone or Android that runs LINE. Force runs in the browser on phones, foldables like iPhone Duo and Galaxy Z Fold / Z Flip, tablets and computers. Guards, shift leaders and spares can clock in from a phone only.",
  "nav.features":"Features","nav.compare":"Compare","nav.faq":"FAQ","nav.contact":"Contact","nav.signin":"Sign in","ribbon.a2":"LINE us","cmp.swipe":"Swipe to compare ›",
  "ribbon.t":"Pilot it on one site before you decide. Setup takes a day.","ribbon.a":"Message us ›",
  "hero.sub":"Proof, every shift, that guards are on post and on patrol.","hero.note":"Security workforce management that guards use inside LINE. No app to install.",
